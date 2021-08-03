@@ -57,12 +57,12 @@ app.use(
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
-    // cookie: {
-    //   httpOnly: true,
-    //   secure: false,
-    //   domain: process.env.NODE_ENV === 'production' && '.filer.pro',
-    //   // domain : 'http://localhost:3060'
-    // },
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      domain: process.env.NODE_ENV === 'production' && '.filer.pro',
+      // domain : 'http://localhost:3060'
+    },
   }),
 );
 app.use(passport.initialize());
