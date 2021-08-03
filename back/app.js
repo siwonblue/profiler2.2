@@ -66,11 +66,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use((req, res, next) => {
-  console.log(`req.authenticate🔥🔥🔥🔥🔥🔥 : ${req.authenticate()} `);
-  console.log(`req.user🔥🔥🔥🔥🔥🔥 : ${req.user} `);
-  next();
-});
+
 app.set('port', process.env.PORT || 3065);
 
 app.get('/', (req, res) => {

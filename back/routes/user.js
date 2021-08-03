@@ -17,7 +17,7 @@ router.get('/withDrawal', isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-router.get('/', async (req, res, next) => {
+router.get('/', isLoggedIn, async (req, res, next) => {
   try {
     if (req.user) {
       const user = await User.findOne({
