@@ -6,10 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DivChildren } from '../style/styled';
 import { backUrl } from '../config/config';
 import test from '../public/test.png';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const About = () => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
+  console.log(`👏👏👏👏👏👏👏about/ me ${me}`);
 
   return (
     <TopBottomEdit title="서비스 소개" footer="" push="my">

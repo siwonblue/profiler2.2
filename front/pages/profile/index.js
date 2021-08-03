@@ -12,16 +12,16 @@ import { LOAD_ALL_PROFILES_REQUEST } from '../../reducers/profile';
 const MyProfile = () => {
   const { me } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  const loadSearch = false;
-  const loadMy = false;
-  const loadProfile = true;
-
   // useEffect(() => {
   //   dispatch({
   //     type: LOAD_MY_INFO_REQUEST,
   //   });
   // }, []);
+
+  const loadSearch = false;
+  const loadMy = false;
+  const loadProfile = true;
+
   return (
     <TopBottomLO loadSearch={loadSearch} loadProfile={loadProfile} loadMy={loadMy} name="my profile">
       {me ? (
