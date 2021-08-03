@@ -30,15 +30,15 @@ const My = () => {
   const loadProfile = false;
   const loadMy = true;
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-    dispatch({
-      type: DONE_RESET,
-    });
-  }, []);
-  console.log(`👏👏👏👏👏👏👏about/ me ${me}`);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  //   dispatch({
+  //     type: DONE_RESET,
+  //   });
+  // }, []);
+  // console.log(`👏👏👏👏👏👏👏about/ me ${me}`);
 
   return (
     <>
@@ -59,6 +59,7 @@ const My = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
   const cookie = req ? req.headers.cookie : '';
+  console.log(`❌❌❌❌❌❌❌❌ req.headers.cookie : ${req.headers.cookie}`);
   axios.defaults.headers.Cookie = '';
   if (req && cookie) {
     axios.defaults.headers.Cookie = cookie;

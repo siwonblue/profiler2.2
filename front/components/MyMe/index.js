@@ -34,7 +34,6 @@ const MyMe = () => {
       type: WITH_DRAWAL_REQUEST,
     });
   }, []);
-  console.log(profiles);
 
   return (
     <div>
