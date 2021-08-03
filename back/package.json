@@ -1,0 +1,46 @@
+{
+  "name": "back-profielr2.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app",
+    "start": "cross-env NODE_ENV=production pm2 start app.js"
+  },
+  "author": "siwon",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.958.0",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "hpp": "^0.2.3",
+    "immer": "^9.0.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "mysql2": "^2.2.5",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "passport-naver": "^1.0.6",
+    "pm2": "^5.1.0",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.9",
+    "prettier": "2.3.2"
+  }
+}
