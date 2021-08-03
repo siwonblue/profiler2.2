@@ -12,11 +12,11 @@ import { LOAD_ALL_PROFILES_REQUEST } from '../../reducers/profile';
 const MyProfile = () => {
   const { me } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  // }, []);
 
   const loadSearch = false;
   const loadMy = false;
@@ -41,19 +41,19 @@ const MyProfile = () => {
     </TopBottomLO>
   );
 };
-//
-// export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-//   const cookie = req ? req.headers.cookie : '';
-//   axios.defaults.headers.Cookie = '';
-//   if (req && cookie) {
-//     axios.defaults.headers.Cookie = cookie;
-//   }
-//   store.dispatch({
-//     type: LOAD_MY_INFO_REQUEST,
-//   });
-//   store.dispatch(END);
-//   await store.sagaTask.toPromise();
-// });
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  const cookie = req ? req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+});
 
 //
 // export const getServerSideProps = wrapper.getServerSideProps(async (context) => {

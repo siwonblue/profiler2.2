@@ -20,15 +20,15 @@ const OtherProfile = () => {
   const { me } = useSelector((state) => state.user);
   const router = useRouter();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-    dispatch({
-      type: LOAD_OTHER_PROFILES_REQUEST,
-      data: router.query.id,
-    });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  //   dispatch({
+  //     type: LOAD_OTHER_PROFILES_REQUEST,
+  //     data: router.query.id,
+  //   });
+  // }, []);
 
   return (
     <>
@@ -46,7 +46,7 @@ const OtherProfile = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, params }) => {
   const cookie = req ? req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
   if (req && cookie) {
@@ -57,7 +57,7 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
   });
   store.dispatch({
     type: LOAD_OTHER_PROFILES_REQUEST,
-    data: req.query.id,
+    data: params.id,
   });
   store.dispatch(END);
   await store.sagaTask.toPromise();
