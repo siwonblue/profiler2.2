@@ -18,6 +18,7 @@ router.get('/withDrawal', isLoggedIn, async (req, res, next) => {
   }
 });
 router.get('/', isLoggedIn, async (req, res, next) => {
+  console.log(`🥶🥶🥶🥶🥶🥶🥶🥶🥶req.headers : ${req.headers}`);
   try {
     if (req.user) {
       const user = await User.findOne({
