@@ -56,7 +56,6 @@ const My = () => {
     formData.append('name', name);
     formData.append('selfIntro', selfIntro);
     formData.append('tag', tag);
-    console.log(formData);
     dispatch({
       type: ADD_PROFILE_REQUEST,
       data: formData,

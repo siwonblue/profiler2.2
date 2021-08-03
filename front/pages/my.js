@@ -30,14 +30,14 @@ const My = () => {
   const loadProfile = false;
   const loadMy = true;
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_MY_INFO_REQUEST,
-  //   });
-  //   dispatch({
-  //     type: DONE_RESET,
-  //   });
-  // }, []);
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+    dispatch({
+      type: DONE_RESET,
+    });
+  }, []);
   // console.log(`👏👏👏👏👏👏👏about/ me ${me}`);
 
   return (
@@ -56,23 +56,23 @@ const My = () => {
     </>
   );
 };
-
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-  const cookie = req ? req.headers.cookie : '';
-  console.log(`❌❌❌❌❌❌❌❌ req.headers.cookie : ${req.headers.cookie}`);
-  axios.defaults.headers.Cookie = '';
-  if (req && cookie) {
-    axios.defaults.headers.Cookie = cookie;
-  }
-  store.dispatch({
-    type: LOAD_MY_INFO_REQUEST,
-  });
-  store.dispatch({
-    type: DONE_RESET,
-  });
-  store.dispatch(END);
-  await store.sagaTask.toPromise();
-});
+//
+// export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+//   const cookie = req ? req.headers.cookie : '';
+//   console.log(`req.headers.cookie : ${req.headers.cookie}`);
+//   axios.defaults.headers.Cookie = '';
+//   if (req && cookie) {
+//     axios.defaults.headers.Cookie = cookie;
+//   }
+//   store.dispatch({
+//     type: LOAD_MY_INFO_REQUEST,
+//   });
+//   store.dispatch({
+//     type: DONE_RESET,
+//   });
+//   store.dispatch(END);
+//   await store.sagaTask.toPromise();
+// });
 
 // export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
 //   console.log('getServerSideProps start');

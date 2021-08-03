@@ -12,11 +12,11 @@ const About = () => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_MY_INFO_REQUEST,
-  //   });
-  // }, []);
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
   // console.log(`👏👏👏👏👏👏👏about/ me ${me}`);
 
   return (

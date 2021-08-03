@@ -27,14 +27,14 @@ const My = () => {
   const dispatch = useDispatch();
   const [showLikedProfile, setShowLikedProfile] = useState(false);
   const [showSlideOut, setShowSlideOut] = useState(false);
-  // useEffect(() => {
-  //   dispatch({
-  //     type: RESET_IMAGE_SUCCESS,
-  //   });
-  //   dispatch({
-  //     type: LOAD_MY_INFO_REQUEST,
-  //   });
-  // }, []);
+  useEffect(() => {
+    dispatch({
+      type: RESET_IMAGE_SUCCESS,
+    });
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
   const action = '프로필 삭제';
   // const url = new URL(window.location.href);
   // const path = `${url.pathname}?${url.searchParams.toString()}`;
@@ -55,7 +55,7 @@ const My = () => {
       profileIndex = parseInt(a?.filter(Boolean)[0], 10);
     }
   }
-  console.log(`🔥🔥🔥🔥🔥🔥profile?.[profileIndex]?,${profile?.[profileIndex]}`);
+
   const likerId = profile?.[profileIndex]?.id;
   const liking = profile?.[profileIndex]?.Liking;
   const exName = profile?.[profileIndex]?.name;
@@ -316,22 +316,22 @@ const My = () => {
     </>
   );
 };
-
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-  const cookie = req ? req.headers.cookie : '';
-  axios.defaults.headers.Cookie = '';
-  if (req && cookie) {
-    axios.defaults.headers.Cookie = cookie;
-  }
-  store.dispatch({
-    type: LOAD_MY_INFO_REQUEST,
-  });
-  store.dispatch({
-    type: RESET_IMAGE_SUCCESS,
-  });
-  store.dispatch(END);
-  await store.sagaTask.toPromise();
-});
+//
+// export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+//   const cookie = req ? req.headers.cookie : '';
+//   axios.defaults.headers.Cookie = '';
+//   if (req && cookie) {
+//     axios.defaults.headers.Cookie = cookie;
+//   }
+//   store.dispatch({
+//     type: LOAD_MY_INFO_REQUEST,
+//   });
+//   store.dispatch({
+//     type: RESET_IMAGE_SUCCESS,
+//   });
+//   store.dispatch(END);
+//   await store.sagaTask.toPromise();
+// });
 
 //
 // export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
