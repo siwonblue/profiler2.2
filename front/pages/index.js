@@ -21,14 +21,14 @@ const Home = () => {
   const { me } = useSelector((state) => state.user);
   const [showDiv, setShowDiv] = useState(false);
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-    dispatch({
-      type: LOAD_ALL_PROFILES_REQUEST,
-    });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  //   dispatch({
+  //     type: LOAD_ALL_PROFILES_REQUEST,
+  //   });
+  // }, []);
 
   const len = allProfiles?.length;
   const loadSearch = true;
@@ -100,22 +100,22 @@ const Home = () => {
     </TopBottomLO>
   );
 };
-//
-// export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-//   const cookie = req ? req.headers.cookie : '';
-//   axios.defaults.headers.Cookie = '';
-//   if (req && cookie) {
-//     axios.defaults.headers.Cookie = cookie;
-//   }
-//   store.dispatch({
-//     type: LOAD_MY_INFO_REQUEST,
-//   });
-//   store.dispatch({
-//     type: LOAD_ALL_PROFILES_REQUEST,
-//   });
-//   store.dispatch(END);
-//   await store.sagaTask.toPromise();
-// });
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  const cookie = req ? req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch({
+    type: LOAD_ALL_PROFILES_REQUEST,
+  });
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+});
 
 // 아래 코드는 브라우저에서 실행되지 않고 프론트 서버에서만 실행
 // export const getServerSideProps = wrapper.getServerSideProps(async (context) => {

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next -p 3060",
     "build": "ANALYZE=true NODE_ENV=production next build",
-    "start" : "NODE_ENV=production next start -p 80"
+    "start": "NODE_ENV=production next start -p 80"
   },
   "author": "siwon",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "cross-env": "^7.0.3",
     "immer": "^9.0.5",
     "next": "^11.0.1",
-    "next-redux-wrapper": "^6.0.2",
+    "next-redux-wrapper": "^7.0.2",
     "pm2": "^5.1.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
