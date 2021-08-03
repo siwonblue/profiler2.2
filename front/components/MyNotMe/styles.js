@@ -13,11 +13,11 @@ export const kakaoStyle = {
   borderRadius: '1rem',
 };
 
-export const a = { marginBottom: "4rem" }
+export const a = { marginBottom: '4rem' };
 
-export const a0 = { opacity: "20%" }
+export const a0 = { opacity: '20%' };
 
-export const a1 = { marginTop: "5rem" }
+export const a1 = { marginTop: '5rem' };
 
 export const b = {
   height: '60vh',

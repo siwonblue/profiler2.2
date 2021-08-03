@@ -9,20 +9,26 @@ import {
   colSt,
   contactMapStyle,
   d0,
-  d1, d10, d11, d12, d13, d14, d15,
+  d1,
+  d10,
+  d11,
+  d12,
+  d13,
+  d14,
+  d15,
   d2,
   d3,
   d4,
   d5,
   d6,
   d7,
-  d8, d9,
+  d8,
+  d9,
   drawerStyle,
   DrawWrapper,
-  rowSt
-} from "./styles";
+  rowSt,
+} from './styles';
 import Link from 'next/link';
-
 
 const RenderOther2 = ({ profile }) => {
   const dispatch = useDispatch();
@@ -76,15 +82,8 @@ const RenderOther2 = ({ profile }) => {
             <MoreOutlined onClick={onToggleLeftDrawer} style={d2} />
           </Col>
 
-          <Col
-            style={d3}
-            span={8}
-          >
-            <img
-              style={ImageStyle5}
-              src={`${imagePath || `defaultProfile.jpeg`}`}
-              alt="profile_image"
-            />
+          <Col style={d3} span={8}>
+            <img style={ImageStyle5} src={`${imagePath || `defaultProfile.jpeg`}`} alt="profile_image" />
           </Col>
           <Col span={8}>{null}</Col>
         </Row>
@@ -135,22 +134,14 @@ const RenderOther2 = ({ profile }) => {
                 title={`${p.name} ---❤️---> ${name}?`}
                 style={{ textAlign: 'center' }}
               >
-                <button style={d9}>
-                  {p.name}
-                </button>
+                <button style={d9}>{p.name}</button>
               </Popconfirm>
             </div>
           ))}
         </Drawer>
       </div>
-      <Row
-        style={d10}
-        name="tag"
-      >
-        <Col
-          style={d11}
-          span={24}
-        >
+      <Row style={d10} name="tag">
+        <Col style={d11} span={24}>
           {finedTags?.map((tag, j) => (
             <Link href="/hashtag/[tag]" as={`/hashtag/${tag.slice(1)}`}>
               <a>
@@ -176,13 +167,7 @@ const RenderOther2 = ({ profile }) => {
             <>
               {Contacts?.map((c) => (
                 <div key={c?.id} style={contactMapStyle}>
-                  <a
-                    style={d14}
-                    key={c?.id}
-                    href={`https://${c?.url}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a style={d14} key={c?.id} href={`https://${c?.url}`} target="_blank" rel="noopener noreferrer">
                     {c?.title}
                   </a>
                 </div>

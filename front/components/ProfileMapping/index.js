@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { Col, Row,  Drawer, Modal } from 'antd';
+import { Col, Row, Drawer, Modal } from 'antd';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { HeartFilled, MoreOutlined } from '@ant-design/icons';
-import {  ImageStyle2, ImageStyle3 } from '../../style/styled';
+import { ImageStyle2, ImageStyle3 } from '../../style/styled';
 import {
   a,
   b,
@@ -23,61 +23,39 @@ import {
   b8,
   b9,
   drawerStyle,
-  DrawWrapper
-} from "./styles";
-
+  DrawWrapper,
+} from './styles';
 
 const ProfileMapping = ({ profile, showLeftDrawer, onToggleLeftDrawer }) => {
-
-  const [draw1,setDraw1] = useState(false)
-  const onDraw1 = useCallback((e)=>{
-    setDraw1((prev)=>!prev)
-  })
-
+  const [draw1, setDraw1] = useState(false);
+  const onDraw1 = useCallback((e) => {
+    setDraw1((prev) => !prev);
+  });
 
   return (
     <>
       <div>
-        <Row
-          name="profile-card"
-          style={a}
-        >
-          <Col
-            name="profile-image"
-            span={7}
-            style={b}
-          >
+        <Row name="profile-card" style={a}>
+          <Col name="profile-image" span={7} style={b}>
             <img
               style={ImageStyle2}
               src={`${profile?.Images?.[0]?.src || `defaultProfile.jpeg`}`}
               alt="profile_image"
             />
           </Col>
-          <Col
-            span={17}
-            style={b0}
-          >
+          <Col span={17} style={b0}>
             <Row name="profile-name-edit">
-              <Col
-                span={16}
-                style={b1}
-              >
+              <Col span={16} style={b1}>
                 <h3>{profile.name}</h3>
               </Col>
-              <Col
-                span={8}
-                style={b2}
-              >
+              <Col span={8} style={b2}>
                 <Link href="/edit/[id]" as={`/edit/${profile.id}`}>
                   <a>편집</a>
                 </Link>
               </Col>
             </Row>
             <Row name="meta-data" style={b3}>
-              <Col
-                span={7}
-                style={b4}
-              >
+              <Col span={7} style={b4}>
                 <Row>
                   <Col span={8}>{null}</Col>
                   <Col span={8}>
@@ -85,26 +63,17 @@ const ProfileMapping = ({ profile, showLeftDrawer, onToggleLeftDrawer }) => {
                   </Col>
                   <Col span={8}>
                     <div>
-                      <MoreOutlined
-                        onClick={onDraw1}
-                        style={b6}
-                      />
+                      <MoreOutlined onClick={onDraw1} style={b6} />
                     </div>
                   </Col>
                 </Row>
                 <div style={b7}>{profile?.Liker?.length}</div>
               </Col>
-              <Col
-                span={7}
-                style={b8}
-              >
+              <Col span={7} style={b8}>
                 <div>Today</div>
                 <div>???</div>
               </Col>
-              <Col
-                span={7}
-                style={b9}
-              >
+              <Col span={7} style={b9}>
                 <div>Total</div>
                 <div>???</div>
               </Col>
@@ -122,13 +91,12 @@ const ProfileMapping = ({ profile, showLeftDrawer, onToggleLeftDrawer }) => {
         >
           <div style={b11}>
             <h4>내 프로필을 관심등록한 프로필</h4>
-            <button style={b12} onClick={onDraw1}>❌</button>
+            <button style={b12} onClick={onDraw1}>
+              ❌
+            </button>
           </div>
           {profile?.Liker?.map((l) => (
-            <div
-              style={b13}
-              key={l.id}
-            >
+            <div style={b13} key={l.id}>
               <Link href="/profile/[id]" as={`/profile/${l.id}`}>
                 <a>
                   <img
@@ -150,7 +118,6 @@ const ProfileMapping = ({ profile, showLeftDrawer, onToggleLeftDrawer }) => {
 };
 
 ProfileMapping.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   profile: PropTypes.shape({
     name: PropTypes.string,
     intro: PropTypes.string,

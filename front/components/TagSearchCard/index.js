@@ -4,8 +4,8 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { ImageStyle2, TagSpan } from '../../style/styled';
 import { MoreOutlined } from '@ant-design/icons';
-import { a, b, c, d } from "./styles";
-import { backUrl } from "../../config/config";
+import { a, b, c, d } from './styles';
+import { backUrl } from '../../config/config';
 
 const TagSearchCard = ({ profile }) => {
   const id = profile?.[0]?.id;
@@ -13,17 +13,11 @@ const TagSearchCard = ({ profile }) => {
   const miTag = exTag?.map((t) => `#${t.name}`);
   const finedTag = miTag?.slice(0, 4);
 
-
-
   return (
     <>
       <div>
         <Row name="profile-card" style={a}>
-          <Col
-            name="profile-image"
-            span={6}
-            style={b}
-          >
+          <Col name="profile-image" span={6} style={b}>
             <Link href="/profile/[id]" as={`/profile/${id}`}>
               <a>
                 <img
@@ -34,11 +28,7 @@ const TagSearchCard = ({ profile }) => {
               </a>
             </Link>
           </Col>
-          <Col
-            span={18}
-            style={
-              c}
-          >
+          <Col span={18} style={c}>
             <Row name="profile-name-edit">
               <Col
                 span={22}
@@ -85,7 +75,6 @@ const TagSearchCard = ({ profile }) => {
 };
 
 TagSearchCard.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   profile: PropTypes.shape({
     name: PropTypes.string,
     intro: PropTypes.string,
@@ -96,24 +85,12 @@ TagSearchCard.propTypes = {
       updatedAt: PropTypes.string,
     }),
   }),
-  // eslint-disable-next-line react/no-unused-prop-types
   UserId: PropTypes.number,
-  // eslint-disable-next-line react/require-default-props
   Images: PropTypes.shape({
     id: PropTypes.number,
     src: PropTypes.string,
     profileId: PropTypes.number,
   }),
 };
-
-// <Row name="profile-tag">
-//   <Col span={24} style={{ border: "1px solid yellow" }}>
-//     <div style={{display:"flex", flexWrap:'wrap'}}>
-//       {profile.Hashtags.map((t) => (
-//         <TagSpan key={t.id}>{t.name}</TagSpan>
-//       ))}
-//     </div>
-//   </Col>
-// </Row>
 
 export default TagSearchCard;

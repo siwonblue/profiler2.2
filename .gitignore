@@ -1,4 +1,6 @@
-/front/pages/test.js
 /back/.env
 /back/node_modules/
 /front/node_modules/
+/profiler2.1.pem
+/front/.next/
+/test/

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { ImageStyle2, TagSpan } from '../../style/styled';
 import { MoreOutlined } from '@ant-design/icons';
-import { f0, f1, f2, f3, f4, f5 } from "./styles";
+import { f0, f1, f2, f3, f4, f5 } from './styles';
 
 const SearchProfileCard = ({ profile }) => {
   const id = profile?.id;
@@ -14,15 +14,8 @@ const SearchProfileCard = ({ profile }) => {
   return (
     <>
       <div>
-        <Row
-          name="profile-card"
-          style={f0}
-        >
-          <Col
-            name="profile-image"
-            span={6}
-            style={f1}
-          >
+        <Row name="profile-card" style={f0}>
+          <Col name="profile-image" span={6} style={f1}>
             <Link href="/profile/[id]" as={`/profile/${id}`}>
               <a>
                 <img
@@ -33,15 +26,9 @@ const SearchProfileCard = ({ profile }) => {
               </a>
             </Link>
           </Col>
-          <Col
-            span={18}
-            style={f2}
-          >
+          <Col span={18} style={f2}>
             <Row name="profile-name-edit">
-              <Col
-                span={22}
-                style={f3}
-              >
+              <Col span={22} style={f3}>
                 <Link href="/profile/[id]" as={`/profile/${id}`}>
                   <a>
                     {' '}
@@ -81,7 +68,6 @@ const SearchProfileCard = ({ profile }) => {
 };
 
 SearchProfileCard.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   profile: PropTypes.shape({
     name: PropTypes.string,
     intro: PropTypes.string,
@@ -92,9 +78,8 @@ SearchProfileCard.propTypes = {
       updatedAt: PropTypes.string,
     }),
   }),
-  // eslint-disable-next-line react/no-unused-prop-types
+
   UserId: PropTypes.number,
-  // eslint-disable-next-line react/require-default-props
   Images: PropTypes.shape({
     id: PropTypes.number,
     src: PropTypes.string,

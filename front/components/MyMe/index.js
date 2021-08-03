@@ -8,7 +8,7 @@ import { LOG_OUT_REQUEST, WITH_DRAWAL_REQUEST } from '../../reducers/user';
 import { useDispatch, useSelector } from 'react-redux';
 import WithDrawalDrawerContent from '../WithDrawalDrawerContent';
 import { backUrl } from '../../config/config';
-import { a, a0, a1, a2, a3, a4, a5, b, btnStyle, c, d, e } from "./styles";
+import { a, a0, a1, a2, a3, a4, a5, b, btnStyle, c, d, e } from './styles';
 
 const MyMe = () => {
   const { me, logOutLoading, withDrawalLoading } = useSelector((state) => state.user);
@@ -35,7 +35,6 @@ const MyMe = () => {
     });
   }, []);
   console.log(profiles);
-
 
   return (
     <div>

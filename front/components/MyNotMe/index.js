@@ -1,9 +1,9 @@
-import React from "react";
-import { Col, Row } from "antd";
+import React from 'react';
+import { Col, Row } from 'antd';
 
-import Link from "next/link";
-import { a, a0, a1, c, d, e, f, kakaoStyle, naverStyle } from "./styles";
-import { backUrl } from "../../config/config";
+import Link from 'next/link';
+import { a, a0, a1, c, d, e, f, kakaoStyle, naverStyle } from './styles';
+import { backUrl } from '../../config/config';
 
 const MyNotMe = () => {
   return (
@@ -49,10 +49,9 @@ const MyNotMe = () => {
             </a>
           </Link>
         </Col>
-      </Row>;
-      ;
+      </Row>
+      ; ;
     </>
-  )
-    ;
+  );
 };
 export default MyNotMe;

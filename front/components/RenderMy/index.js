@@ -20,16 +20,16 @@ import {
   c18,
   c19,
   c2,
-  c20, c21,
+  c20,
+  c21,
   c3,
   c4,
   c5,
   c6,
   c7,
   c8,
-  c9
-} from "./styles";
-
+  c9,
+} from './styles';
 
 const RenderMy = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const RenderMy = () => {
   const profileId = profiles?.[profileNumb]?.id;
   const [title, changeTitle, setTitle] = useInput('');
   const [url, changeUrl, setUrl] = useInput('');
-  const finedTags = profiles?.[profileNumb]?.Hashtags?.map(t=>`#${t.name}`)
+  const finedTags = profiles?.[profileNumb]?.Hashtags?.map((t) => `#${t.name}`);
   // console.log(profiles?.[profileNumb]?.Hashtags)
 
   const onRight = () => {
@@ -122,7 +122,7 @@ const RenderMy = () => {
     flexDirection: 'column',
     justifyContent: 'center',
   };
-  console.log(`🔥🔥🔥🔥🔥🔥profiles?.[profileNumb]?.Images :${profiles?.[profileNumb]?.Images?.[0]}`)
+  console.log(`🔥🔥🔥🔥🔥🔥profiles?.[profileNumb]?.Images :${profiles?.[profileNumb]?.Images?.[0]}`);
 
   return (
     <>
@@ -141,10 +141,7 @@ const RenderMy = () => {
                   <LeftOutlined onClick={onLeft} style={arrowStyle1} />
                 )}
               </Col>
-              <Col
-                style={c2}
-                span={8}
-              >
+              <Col style={c2} span={8}>
                 <img
                   style={ImageStyle}
                   src={`${profiles?.[profileNumb]?.Images?.[0]?.src || `defaultProfile.jpeg`}`}
@@ -169,20 +166,14 @@ const RenderMy = () => {
                 <h3>{profiles?.[profileNumb]?.intro}</h3>
               </Col>
             </Row>
-            <Row
-              style={c5}
-              name="tag"
-            >
-              <Col
-                style={c6}
-                span={24}
-              >
+            <Row style={c5} name="tag">
+              <Col style={c6} span={24}>
                 {/*{profiles?.[profileNumb]?.Hashtags.map((p) => (*/}
                 {/*  <TagSpan style={{ fontSize: '1.5rem', padding: '.3rem 1.3rem' }} key={p.id}>*/}
                 {/*    {p.name}*/}
                 {/*  </TagSpan>*/}
                 {/*))}*/}
-                {finedTags.map((p,j) => (
+                {finedTags.map((p, j) => (
                   <TagSpan style={c7} key={j}>
                     {p}
                   </TagSpan>
@@ -193,10 +184,7 @@ const RenderMy = () => {
               <Col style={c9} span={9}>
                 <h1>Contact</h1>
               </Col>
-              <Col
-                style={c10}
-                span={15}
-              >
+              <Col style={c10} span={15}>
                 {contactFormOpened ? (
                   <UpCircleFilled onClick={onToggleContactForm} style={c11} />
                 ) : (
@@ -237,11 +225,7 @@ const RenderMy = () => {
                           placeholder="www.instagram.com/sampling_2"
                           required
                         />
-                        <Button
-                          style={c16}
-                          htmlType="submit"
-                          loading={addContactLoading}
-                        >
+                        <Button style={c16} htmlType="submit" loading={addContactLoading}>
                           <div style={c17}>ADD</div>
                         </Button>
                       </Form>
@@ -257,13 +241,7 @@ const RenderMy = () => {
                     <Col span={8}>{null}</Col>
                     <Col span={8}>
                       <div>
-                        <a
-                          style={c18}
-                          key={c?.id}
-                          href={`${c?.url}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
+                        <a style={c18} key={c?.id} href={`${c?.url}`} target="_blank" rel="noopener noreferrer">
                           {c?.title}
                         </a>
                       </div>
@@ -292,6 +270,5 @@ const RenderMy = () => {
     </>
   );
 };
-
 
 export default RenderMy;

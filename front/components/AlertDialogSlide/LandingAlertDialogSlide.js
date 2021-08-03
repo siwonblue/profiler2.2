@@ -6,7 +6,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Slide from '@material-ui/core/Slide';
 
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -18,7 +17,7 @@ export default function LandingAlertDialogSlide() {
     setOpen(false);
   };
 
-  const style={color:'black'}
+  const style = { color: 'black' };
 
   return (
     <div>
@@ -30,8 +29,7 @@ export default function LandingAlertDialogSlide() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-
-        <DialogContent style={{textAlign:'center'}}>
+        <DialogContent style={{ textAlign: 'center' }}>
           <DialogContentText id="alert-dialog-slide-description">
             <h3 style={style}>존재는 알지만 대화해 본 적 없는 우리,</h3>
           </DialogContentText>
@@ -39,7 +37,7 @@ export default function LandingAlertDialogSlide() {
             <h3 style={style}> SNS 친구부터 되어 볼까요?</h3>
           </DialogContentText>
         </DialogContent>
-        <DialogActions style={{display:"flex", justifyContent:'center'}}>
+        <DialogActions style={{ display: 'flex', justifyContent: 'center' }}>
           <Button onClick={handleClose} color="primary">
             확인
           </Button>
