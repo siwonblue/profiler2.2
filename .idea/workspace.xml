@@ -2,57 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1962474f-e08d-4f16-8f47-dbe6cac62196" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/front/.babelrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/.eslintrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/reducers/profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/reducers/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/sagas/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/sagas/profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/sagas/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/store/configureStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/style/styled.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/back/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/back/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/AlertDialogSlide/AlertDialogSlide.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/AlertDialogSlide/AlertDialogSlide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/AlertDialogSlide/LandingAlertDialogSlide.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/AlertDialogSlide/LandingAlertDialogSlide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/Layout/TopBottomEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/Layout/TopBottomEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/LikingProfileCard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/LikingProfileCard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/LikingProfileCard/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/LikingProfileCard/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/MyMe/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/MyMe/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/MyMe/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/MyMe/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/MyNotMe/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/MyNotMe/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/MyNotMe/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/MyNotMe/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/ProfileMapping/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/ProfileMapping/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/ProfileMapping/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/ProfileMapping/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/RenderMy/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/RenderMy/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/RenderMy/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/RenderMy/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/RenderOther/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/RenderOther/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/RenderOther/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/RenderOther/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/SearchProfileCard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/SearchProfileCard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/SearchProfileCard/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/SearchProfileCard/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/SuggestionList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/SuggestionList/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/TagSearchCard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/TagSearchCard/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/TagSearchCard/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/TagSearchCard/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/components/WithDrawalDrawerContent/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/components/WithDrawalDrawerContent/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/config/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/_document.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/_document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/about.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/edit/[id].js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/edit/[id].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/edit/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/edit/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/hashtag/[tag].js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/hashtag/[tag].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/my.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/my.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/profile/[id].js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/profile/[id].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/profile/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +19,17 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/front/package.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/front/pages/about.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/front/pages/profile/[id].js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/front/pages/profile/index.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/back/.env" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/front/pages/_app.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/profiler2.1.pem" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/back/app.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1wCEFvra7yb3lLmDaVFVYh2TopZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -105,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1627954069592</updated>
       <workItem from="1627954070944" duration="5000" />
-      <workItem from="1627954849115" duration="15188000" />
+      <workItem from="1627954849115" duration="16555000" />
     </task>
     <servers />
   </component>
