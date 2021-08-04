@@ -16,16 +16,16 @@ const Home = () => {
   const len = hashtagProfiles?.length;
   const dispatch = useDispatch();
   const router = useRouter();
-
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-    dispatch({
-      type: LOAD_HASHTAG_PROFILES_REQUEST,
-      data: router.query.tag,
-    });
-  }, []);
+  //
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  //   dispatch({
+  //     type: LOAD_HASHTAG_PROFILES_REQUEST,
+  //     data: router.query.tag,
+  //   });
+  // }, []);
 
   return (
     <TopBottomEdit title="검색 결과" push="">
@@ -84,23 +84,23 @@ const Home = () => {
     </TopBottomEdit>
   );
 };
-//
-// export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-//   const cookie = req ? req.headers.cookie : '';
-//   axios.defaults.headers.Cookie = '';
-//   if (req && cookie) {
-//     axios.defaults.headers.Cookie = cookie;
-//   }
-//   store.dispatch({
-//     type: LOAD_MY_INFO_REQUEST,
-//   });
-//   store.dispatch({
-//     type: LOAD_HASHTAG_PROFILES_REQUEST,
-//     data: req.query.tag,
-//   });
-//   store.dispatch(END);
-//   await store.sagaTask.toPromise();
-// });
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, params }) => {
+  const cookie = req ? req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch({
+    type: LOAD_HASHTAG_PROFILES_REQUEST,
+    data: params.tag,
+  });
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+});
 
 // 아래 코드는 브라우저에서 실행되지 않고 프론트 서버에서만 실행
 // export const getServerSideProps = wrapper.getServerSideProps(async (context) => {

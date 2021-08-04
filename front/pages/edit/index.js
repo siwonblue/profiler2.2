@@ -25,14 +25,14 @@ const My = () => {
   const [selfIntro, onChangeSelfIntro] = useInput('');
   const [tag, onChangeTag] = useInput('');
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-    dispatch({
-      type: RESET_IMAGE_SUCCESS,
-    });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  //   dispatch({
+  //     type: RESET_IMAGE_SUCCESS,
+  //   });
+  // }, []);
 
   useEffect(() => {
     if (addProfileDone) {

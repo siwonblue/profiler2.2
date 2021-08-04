@@ -1,8 +1,10 @@
 import React from 'react';
 import { Col, Row } from 'antd';
-
+import Image from 'next/image';
 import Link from 'next/link';
-import { a, a0, a1, c, d, e, f, kakaoStyle, naverStyle } from './styles';
+import naver from '../../public/naver.png';
+import kakao from '../../public/kakao.png';
+import { a, a0, a1, c, d, e, e0, e1, f, kakaoStyle, naverStyle } from './styles';
 import { backUrl } from '../../config/config';
 
 const MyNotMe = () => {
@@ -20,23 +22,27 @@ const MyNotMe = () => {
       <div>
         <a href={`${backUrl}/user/naver`} rel="noopener noreferrer">
           <Row style={naverStyle}>
-            <Col span={3}>
-              <img width="20" height="20" src={`${backUrl}/naver.png`} alt="오류" />
+            <Col style={e0} span={8}>
+              <Image width={20} height={20} src={naver} />
+              {/*<img width="20" height="20" src={`${backUrl}/naver.png`} alt="오류" />*/}
             </Col>
-            <Col style={c} span={21}>
+            <Col style={e1} span={8}>
               <h4 style={e}>네이버 로그인</h4>
             </Col>
+            <Col span={8}>{null}</Col>
           </Row>
         </a>
 
         <a href={`${backUrl}/user/kakao`} rel="noopener noreferrer">
           <Row style={kakaoStyle}>
-            <Col span={3}>
-              <img width="20" height="20" src={`${backUrl}/kakao.png`} alt="오류" />
+            <Col style={e0} span={8}>
+              <Image width={20} height={20} src={kakao} />
+              {/*<img width="20" height="20" src={`${backUrl}/kakao.png`} alt="오류" />*/}
             </Col>
-            <Col style={c} span={21}>
+            <Col style={e1} span={8}>
               <h4 style={d}>카카오 로그인</h4>
             </Col>
+            <Col span={8}>{null}</Col>
           </Row>
         </a>
       </div>

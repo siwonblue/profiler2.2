@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import PropTypes from 'prop-types';
 import useInput from '../../hooks/useInput';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +9,7 @@ import Link from 'next/link';
 import { ImageStyle6 } from '../../style/styled';
 import { a, a0, b, c, d, e, f } from './styles';
 import { backUrl } from '../../config/config';
+import tag from '../../public/tag.png';
 
 const SuggestionA = ({ showDiv, onTrue, onFalse }) => {
   const [input, onChangeInput, setInput] = useInput('');
@@ -27,9 +29,6 @@ const SuggestionA = ({ showDiv, onTrue, onFalse }) => {
 
   let profileWithTag = suggestion?.profileWithTag;
   let profiles = suggestion?.profiles;
-  console.log('profiles', suggestion);
-  console.log(profileWithTag?.length);
-  console.log(profiles?.length);
   // const onTrue = useCallback(() => {
   //   setShowDiv(true);
   // });
@@ -56,7 +55,8 @@ const SuggestionA = ({ showDiv, onTrue, onFalse }) => {
                 <li>
                   <Row key={a?.[0]?.id}>
                     <Col style={d} span={6}>
-                      <img style={ImageStyle6} src={`${backUrl}/tag.png`} alt="kakao" />
+                      {/*<img style={ImageStyle6} src={`${backUrl}/tag.png`} alt="kakao" />*/}
+                      <Image width={20} height={20} src={tag} />
                     </Col>
                     <Col span={18}>
                       <Row>

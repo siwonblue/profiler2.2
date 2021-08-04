@@ -13,6 +13,9 @@ import {
   LOAD_OTHER_PROFILES_REQUEST,
   LOAD_OTHER_PROFILES_SUCCESS,
   LOAD_OTHER_PROFILES_FAILURE,
+  LOAD_ALL_PROFILES_LEN_REQUEST,
+  LOAD_ALL_PROFILES_LEN_SUCCESS,
+  LOAD_ALL_PROFILES_LEN_FAILURE,
   LOAD_HASHTAG_PROFILES_REQUEST,
   LOAD_HASHTAG_PROFILES_SUCCESS,
   LOAD_HASHTAG_PROFILES_FAILURE,
@@ -73,8 +76,8 @@ function* loadSuggestion(action) {
   }
 }
 
-function loadAllProfilesAPI() {
-  return axios.get('/profiles/loadAll');
+function loadAllProfilesAPI(lastId) {
+  return axios.get(`/profiles/loadAll?lastId=${lastId || 0}`);
 }
 
 function* loadAllProfiles(action) {
@@ -110,6 +113,27 @@ function* loadOtherProfiles(action) {
     console.error(err);
     yield put({
       type: LOAD_OTHER_PROFILES_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+
+function loadAllProfilesLenAPI() {
+  return axios.get('/profiles/loadAllLen');
+}
+
+function* loadAllProfilesLen(action) {
+  try {
+    console.log('saga loadAllProfiles');
+    const result = yield call(loadAllProfilesLenAPI);
+    yield put({
+      type: LOAD_ALL_PROFILES_LEN_SUCCESS,
+      data: result.data,
+    });
+  } catch (err) {
+    console.error(err);
+    yield put({
+      type: LOAD_ALL_PROFILES_LEN_FAILURE,
       error: err.response.data,
     });
   }
@@ -351,6 +375,10 @@ function* watchLoadAllProfiles() {
   yield takeLatest(LOAD_ALL_PROFILES_REQUEST, loadAllProfiles);
 }
 
+function* watchLoadAllProfilesLen() {
+  yield takeLatest(LOAD_ALL_PROFILES_LEN_REQUEST, loadAllProfilesLen);
+}
+
 function* watchLoadOtherProfiles() {
   yield takeLatest(LOAD_OTHER_PROFILES_REQUEST, loadOtherProfiles);
 }
@@ -404,6 +432,7 @@ export default function* profileSaga() {
     fork(watchLoadSuggestion),
     fork(watchLoadAllProfiles),
     fork(watchLoadOtherProfiles),
+    fork(watchLoadAllProfilesLen),
     fork(watchLoadHashtagProfiles),
     fork(watchAddContact),
     fork(watchDeleteContact),

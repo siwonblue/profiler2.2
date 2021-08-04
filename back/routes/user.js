@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { User, Profile, Image, Hashtag, Contact } = require('../models');
 const router = express.Router();
-const frontUrl = 'http://filer.pro';
-// const frontUrl = "http://localhost:3060";
+// const frontUrl = 'http://filer.pro';
+const frontUrl = 'http://localhost:3060';
 router.get('/withDrawal', isLoggedIn, async (req, res, next) => {
   try {
     const userId = req.user.id;
@@ -17,8 +17,7 @@ router.get('/withDrawal', isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-router.get('/', isLoggedIn, async (req, res, next) => {
-  console.log(`🥶🥶🥶🥶🥶🥶🥶🥶🥶req.headers : ${req.headers}`);
+router.get('/', async (req, res, next) => {
   try {
     if (req.user) {
       const user = await User.findOne({
@@ -127,7 +126,6 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
 });
 
 router.post('/logout', isLoggedIn, (req, res) => {
-  console.log(req.user);
   req.logout();
   req.session.destroy();
   res.send('logout success');

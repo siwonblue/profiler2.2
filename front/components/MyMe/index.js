@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import Image from 'next/image';
 import { Button, Col, Drawer, Row } from 'antd';
 import { PlusCircleTwoTone } from '@ant-design/icons';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import { drawerStyle, ImageStyle, rowStyle, rowStyle1 } from '../../style/styled
 import { LOG_OUT_REQUEST, WITH_DRAWAL_REQUEST } from '../../reducers/user';
 import { useDispatch, useSelector } from 'react-redux';
 import WithDrawalDrawerContent from '../WithDrawalDrawerContent';
+import defaultImg from '../../public/defaultProfile.jpeg';
 import { backUrl } from '../../config/config';
 import { a, a0, a1, a2, a3, a4, a5, b, btnStyle, c, d, e } from './styles';
 
@@ -48,11 +50,11 @@ const MyMe = () => {
       </Row>
       <Row>
         <Col style={a3} span={24}>
-          {profiles?.length < 10 && (
+          {profiles?.length < 30 && (
             // <Col span={24} style={{ textAlign: 'center', marginBottom: '2rem', border:'1px solid red' }}>
             <Link href="/edit">
               <a>
-                <img style={ImageStyle} src={`${backUrl}/${null || `defaultProfile.jpeg`}`} alt="profile_image" />
+                <img style={ImageStyle} src={defaultImg} alt="에러에러에러에ㅓㄹ" />
                 <div style={a2}>
                   <PlusCircleTwoTone style={a1} />
                 </div>

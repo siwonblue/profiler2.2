@@ -1,11 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Form, Row, message, Button } from 'antd';
-
+import { useInView } from 'react-intersection-observer';
 import SearchProfileCard from '../components/SearchProfileCard';
 import TopBottomLO from '../components/Layout/TopBottomLO';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
-import { DONE_RESET, LOAD_ALL_PROFILES_REQUEST, LOAD_HASHTAG_PROFILES_REQUEST } from '../reducers/profile';
+import {
+  DONE_RESET,
+  LOAD_ALL_PROFILES_LEN_REQUEST,
+  LOAD_ALL_PROFILES_REQUEST,
+  LOAD_HASHTAG_PROFILES_REQUEST,
+} from '../reducers/profile';
 import { DivChildren, LocalInput, rowStyle } from '../style/styled';
 import wrapper from '../store/configureStore';
 import { END } from 'redux-saga';
@@ -17,19 +22,24 @@ import LandingAlertDialogSlide from '../components/AlertDialogSlide/LandingAlert
 const Home = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { allProfiles, hasMoreProfiles } = useSelector((state) => state.profile);
+  const { allProfiles, hasMoreProfiles, loadAllProfilesLoading, allProfilesLen } = useSelector(
+    (state) => state.profile,
+  );
   const { me } = useSelector((state) => state.user);
   const [showDiv, setShowDiv] = useState(false);
+  const [ref, inView] = useInView();
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_MY_INFO_REQUEST,
-  //   });
-  //   dispatch({
-  //     type: LOAD_ALL_PROFILES_REQUEST,
-  //   });
-  // }, []);
+  useEffect(() => {
+    if (inView && hasMoreProfiles && !loadAllProfilesLoading) {
+      const lastId = allProfiles[allProfiles.length - 1]?.id;
 
+      dispatch({
+        type: LOAD_ALL_PROFILES_REQUEST,
+        data: lastId,
+      });
+    }
+  }, [inView, hasMoreProfiles, loadAllProfilesLoading, allProfiles]);
+  const allLen = allProfilesLen;
   const len = allProfiles?.length;
   const loadSearch = true;
   const loadMy = false;
@@ -74,7 +84,7 @@ const Home = () => {
           <Col style={b} span={8}>
             <div style={c}>
               <div style={d}>
-                <h1>{len}</h1>
+                <h1>{allProfilesLen}</h1>
                 <div style={e}>개의</div>
               </div>
               <div style={f}>프로필</div>
@@ -93,6 +103,7 @@ const Home = () => {
             {allProfiles && allProfiles.map((profile) => <SearchProfileCard profile={profile} key={profile.id} />)}
           </Col>
         </Row>
+        <div ref={hasMoreProfiles && !loadAllProfilesLoading ? ref : undefined} />
         <Row name="margin" style={i}>
           {null}
         </Row>
@@ -109,6 +120,9 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
   }
   store.dispatch({
     type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch({
+    type: LOAD_ALL_PROFILES_LEN_REQUEST,
   });
   store.dispatch({
     type: LOAD_ALL_PROFILES_REQUEST,

@@ -12,41 +12,30 @@ const About = () => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_MY_INFO_REQUEST,
-  //   });
-  // }, []);
-  // console.log(`👏👏👏👏👏👏👏about/ me ${me}`);
-
   return (
     <TopBottomEdit title="서비스 소개" footer="" push="my">
       <DivChildren>
-        <Image width={40} height={40} src={test}></Image>
         <Row>
           <Col span={24}>
-            <h1>NETWORKING</h1>
-          </Col>
-          <img src={`${backUrl}/test.png`} alt="" />
-        </Row>
-        <Row style={{ border: '1px solid red', marginBottom: '3rem' }}>
-          <div>
-            아이콘 제작자{' '}
-            <a href="https://www.freepik.com" title="Freepik">
-              Freepik
-            </a>{' '}
-            from{' '}
-            <a href="https://www.flaticon.com/kr/" title="Flaticon">
-              www.flaticon.com
-            </a>
-          </div>
-          <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={24}>
-            <h3>개요)핸드폰만 있었따.</h3>
+            <h1>아날로그 감성</h1>
           </Col>
         </Row>
         <Row style={{ border: '1px solid red', marginBottom: '3rem' }}>
           <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={24}>
-            <h3>SNS가 많아졌따.</h3>
+            <h4>전화번호만 존재하던 그 시절,</h4>
+          </Col>
+        </Row>
+        <Row>
+          <Col style={{ display: 'flex', justifyContent: 'flex-end' }} span={24}>
+            <h1>디지털 시대</h1>
+          </Col>
+        </Row>
+        <Row style={{ border: '1px solid red', marginBottom: '3rem' }}>
+          <Col
+            style={{ display: 'flex', justifyContent: 'flex-end', border: '1px solid aqua', marginBottom: '1rem' }}
+            span={24}
+          >
+            <h3>나를 표현하는 수단이 많아졌다.</h3>
           </Col>
           <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={4}>
             <h4>인스타</h4>
@@ -77,18 +66,7 @@ const About = () => {
         </Row>
         <Row style={{ border: '1px solid red', marginBottom: '3rem' }}>
           <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={24}>
-            <h3>Problem2)수수료까지 먹는다.</h3>
-          </Col>
-          <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={12}>
-            <h4>수 많은 데이팅앱</h4>
-          </Col>
-          <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={12}>
-            <h4>재능 판매</h4>
-          </Col>
-        </Row>
-        <Row style={{ border: '1px solid red', marginBottom: '3rem' }}>
-          <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={24}>
-            <h3>Problem3)제대로된 네트워킹은 되지 않는다.</h3>
+            <h3>Problem2)제대로된 네트워킹은 되지 않는다.</h3>
           </Col>
           <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={12}>
             <h3>같은 단톡방에 있는 저 친구 궁금하다</h3>
@@ -101,6 +79,17 @@ const About = () => {
           </Col>
           <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={12}>
             <h3>~사람 찾는데 내 주변 커뮤니티에서 못 구할까?</h3>
+          </Col>
+        </Row>
+        <Row style={{ border: '1px solid red', marginBottom: '3rem' }}>
+          <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={24}>
+            <h3>Problem3)수수료까지 먹는다.</h3>
+          </Col>
+          <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={12}>
+            <h4>수 많은 데이팅앱</h4>
+          </Col>
+          <Col style={{ border: '1px solid aqua', marginBottom: '1rem' }} span={12}>
+            <h4>재능 판매</h4>
           </Col>
         </Row>
       </DivChildren>

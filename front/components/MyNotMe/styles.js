@@ -30,3 +30,6 @@ export const c = { textAlign: 'center', position: 'relative', right: '1.3rem' };
 export const d = { color: 'black' };
 export const e = { color: '#FFFFFF' };
 export const f = { opacity: '50%', marginBottom: '1rem' };
+
+export const e0 = { display: 'flex', alignItems: 'center' };
+export const e1 = { display: 'flex', alignItems: 'center', justifyContent: 'center' };

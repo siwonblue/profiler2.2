@@ -1,6 +1,7 @@
 import produce from 'immer';
 
 export const initialState = {
+  allProfilesLen: null,
   allProfiles: [],
   hashtagProfiles: [],
   contacts: [],
@@ -12,6 +13,9 @@ export const initialState = {
   imagePath: null,
   intro: null,
   profile: null,
+  loadAllProfilesLenLoading: false, // 전체 프로필 수 불러오기
+  loadAllProfilesLenDone: false,
+  loadAllProfilesLenError: null,
   addTodayLoading: false, // today 추가 시도중
   addTodayDone: false,
   addTodayError: null,
@@ -86,6 +90,10 @@ export const LOAD_OTHER_PROFILES_REQUEST = 'LOAD_OTHER_PROFILES_REQUEST';
 export const LOAD_OTHER_PROFILES_SUCCESS = 'LOAD_OTHER_PROFILES_SUCCESS';
 export const LOAD_OTHER_PROFILES_FAILURE = 'LOAD_OTHER_PROFILES_FAILURE';
 
+export const LOAD_ALL_PROFILES_LEN_REQUEST = 'LOAD_ALL_PROFILES_LEN_REQUEST';
+export const LOAD_ALL_PROFILES_LEN_SUCCESS = 'LOAD_ALL_PROFILES_LEN_SUCCESS';
+export const LOAD_ALL_PROFILES_LEN_FAILURE = 'LOAD_ALL_PROFILES_LEN_FAILURE';
+
 export const LOAD_HASHTAG_PROFILES_REQUEST = 'LOAD_HASHTAG_PROFILES_REQUEST';
 export const LOAD_HASHTAG_PROFILES_SUCCESS = 'LOAD_HASHTAG_PROFILES_SUCCESS';
 export const LOAD_HASHTAG_PROFILES_FAILURE = 'LOAD_HASHTAG_PROFILES_FAILURE';
@@ -137,6 +145,21 @@ const reducer = (state = initialState, action) =>
       case DONE_RESET:
         draft.addProfileDone = false;
         draft.editProfileDone = false;
+        break;
+      case LOAD_ALL_PROFILES_LEN_REQUEST:
+        draft.loadAllProfilesLenLoading = true;
+        draft.loadAllProfilesLenDone = false;
+        draft.loadAllProfilesLenError = null;
+        break;
+      case LOAD_ALL_PROFILES_LEN_SUCCESS: {
+        draft.loadAllProfilesLenLoading = false;
+        draft.loadAllProfilesLenDone = true;
+        draft.allProfilesLen = action.data;
+        break;
+      }
+      case LOAD_ALL_PROFILES_LEN_FAILURE:
+        draft.loadAllProfilesLenLoading = false;
+        draft.loadAllProfilesLenError = action.error;
         break;
       case RESET_IMAGE_REQUEST:
         draft.resetImageLoading = true;
@@ -191,7 +214,7 @@ const reducer = (state = initialState, action) =>
         draft.loadAllProfilesLoading = false;
         draft.loadAllProfilesDone = true;
         draft.allProfiles = draft.allProfiles.concat(action.data);
-        draft.hasMoreProfiles = draft.allProfiles.length < 20;
+        draft.hasMoreProfiles = action.data.length === 10;
         break;
       }
       case LOAD_ALL_PROFILES_FAILURE:
