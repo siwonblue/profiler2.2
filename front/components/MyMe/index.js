@@ -7,13 +7,12 @@ import ProfileMapping from '../ProfileMapping';
 import { drawerStyle, ImageStyle, rowStyle, rowStyle1 } from '../../style/styled';
 import { LOG_OUT_REQUEST, WITH_DRAWAL_REQUEST } from '../../reducers/user';
 import { useDispatch, useSelector } from 'react-redux';
-import WithDrawalDrawerContent from '../WithDrawalDrawerContent';
-import defaultImg from '../../public/defaultProfile.jpeg';
-import { backUrl } from '../../config/config';
 import { a, a0, a1, a2, a3, a4, a5, b, btnStyle, c, d, e } from './styles';
+import DeleteAlertDialogSlide from '../AlertDialogSlide/DeleteAlertDialogSlide';
 
 const MyMe = () => {
   const { me, logOutLoading, withDrawalLoading } = useSelector((state) => state.user);
+  const { imagePath } = useSelector((state) => state.profile);
   const [showSlideOut, setShowSlideOut] = useState(false);
   const [showLeftDrawer, setShowLeftDrawer] = useState(false);
   const profiles = me?.profiles;
@@ -102,22 +101,9 @@ const MyMe = () => {
               회원 탈퇴
             </Button>
           </Col>
-          <Col span={24}>
-            <Button style={btnStyle}>문의하기</Button>
-          </Col>
         </Row>
       </div>
-      <Drawer
-        drawerStyle={drawerStyle}
-        placement="bottom"
-        closable={false}
-        onClose={test}
-        visible={showSlideOut}
-        getContainer={false}
-        style={c}
-      >
-        <WithDrawalDrawerContent onAction={onWithDrawal} test={test} action={action} />
-      </Drawer>
+      <DeleteAlertDialogSlide onAction={onWithDrawal} showSlideOut={showSlideOut} action={action} test={test} />
     </div>
   );
 };

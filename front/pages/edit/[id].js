@@ -18,6 +18,7 @@ import wrapper from '../../store/configureStore';
 import axios from 'axios';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 import { END } from 'redux-saga';
+import DeleteAlertDialogSlide from '../../components/AlertDialogSlide/DeleteAlertDialogSlide';
 
 const My = () => {
   const { me } = useSelector((state) => state.user);
@@ -287,17 +288,18 @@ const My = () => {
               </Row>
               {showLikedProfile && liking.length === 0 && <h3>프로필을 둘러보고 관심등록을 해보세요!</h3>}
 
-              <Drawer
-                placement="bottom"
-                getContainer={false}
-                closable
-                onClose={test}
-                visible={showSlideOut}
-                style={{ position: 'absolute' }}
-                drawerStyle={drawerStyle}
-              >
-                <WithDrawalDrawerContent action={action} onAction={onDelete} test={test} />
-              </Drawer>
+              <DeleteAlertDialogSlide showSlideOut={showSlideOut} action={action} onAction={onDelete} test={test} />
+              {/*<Drawer*/}
+              {/*  placement="bottom"*/}
+              {/*  getContainer={false}*/}
+              {/*  closable*/}
+              {/*  onClose={test}*/}
+              {/*  visible={showSlideOut}*/}
+              {/*  style={{ position: 'absolute' }}*/}
+              {/*  drawerStyle={drawerStyle}*/}
+              {/*>*/}
+              {/*  <WithDrawalDrawerContent action={action} onAction={onDelete} test={test} />*/}
+              {/*</Drawer>*/}
             </div>
           </TopBottomEdit>
         ) : (
