@@ -11,7 +11,7 @@ const helmet = require('helmet');
 const passportConfig = require('./passport');
 dotenv.config();
 const app = express();
-const frontUrl = 'http://filer.pro';
+const frontUrl = 'https://filer.pro';
 // const frontUrl = 'http://localhost:3060';
 
 const db = require('./models');

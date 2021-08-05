@@ -54,7 +54,7 @@ const MyMe = () => {
             // <Col span={24} style={{ textAlign: 'center', marginBottom: '2rem', border:'1px solid red' }}>
             <Link href="/edit">
               <a>
-                <img style={ImageStyle} src={defaultImg} alt="에러에러에러에ㅓㄹ" />
+                <img style={ImageStyle} src={`${imagePath || `defaultProfile.jpeg`}`} alt="profile_image" />
                 <div style={a2}>
                   <PlusCircleTwoTone style={a1} />
                 </div>

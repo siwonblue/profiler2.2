@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { User, Profile, Image, Hashtag, Contact } = require('../models');
 const router = express.Router();
-const frontUrl = 'http://filer.pro';
+const frontUrl = 'https://filer.pro';
 // const frontUrl = 'http://localhost:3060';
 router.get('/withDrawal', isLoggedIn, async (req, res, next) => {
   try {
