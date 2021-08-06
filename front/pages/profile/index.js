@@ -8,6 +8,7 @@ import wrapper from '../../store/configureStore';
 import axios from 'axios';
 import { END } from 'redux-saga';
 import { LOAD_ALL_PROFILES_REQUEST } from '../../reducers/profile';
+import Head from 'next/head';
 
 const MyProfile = () => {
   const { me } = useSelector((state) => state.user);
@@ -24,6 +25,10 @@ const MyProfile = () => {
 
   return (
     <TopBottomLO loadSearch={loadSearch} loadProfile={loadProfile} loadMy={loadMy} name="my profile">
+      <Head>
+        <meta property="og:title" content="프로파일러" />
+        <meta property="og:description" content="주변사람 SNS 찾기" />
+      </Head>
       {me ? (
         <RenderMy />
       ) : (

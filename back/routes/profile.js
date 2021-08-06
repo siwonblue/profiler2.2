@@ -6,8 +6,8 @@ const { isLoggedIn } = require('./middlewares');
 const { Hashtag, Profile, User, Image, Contact } = require('../models');
 const multerS3 = require('multer-s3');
 const AWS = require('aws-sdk');
-
 const router = express.Router();
+
 try {
   fs.accessSync('uploads');
 } catch (error) {

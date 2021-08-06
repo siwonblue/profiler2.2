@@ -15,6 +15,7 @@ import {
   RESET_IMAGE_REQUEST,
   RESET_IMAGE_SUCCESS,
 } from '../../reducers/profile';
+import Head from 'next/head';
 
 const My = () => {
   const router = useRouter();
@@ -75,6 +76,10 @@ const My = () => {
 
   return (
     <>
+      <Head>
+        <meta property="og:title" content="프로파일러" />
+        <meta property="og:description" content="주변사람 SNS 찾기" />
+      </Head>
       <TopBottomEdit title="프로필 생성" footer="" push="my">
         {me && (
           <>

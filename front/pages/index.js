@@ -18,6 +18,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import SuggestionList from '../components/SuggestionList';
 import LandingAlertDialogSlide from '../components/AlertDialogSlide/LandingAlertDialogSlide';
+import Head from 'next/head';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -77,6 +78,10 @@ const Home = () => {
   const i = { marginBottom: '4rem' };
   return (
     <TopBottomLO loadSearch={loadSearch} loadProfile={loadProfile} loadMy={loadMy}>
+      <Head>
+        <meta property="og:title" content="프로파일러" />
+        <meta property="og:description" content="주변사람 SNS 찾기" />
+      </Head>
       {!me && <LandingAlertDialogSlide />}
       <DivChildren onClick={onFalse} style={{ height: '100%' }}>
         <SuggestionList showDiv={showDiv} onTrue={onTrue} onFalse={onFalse} />

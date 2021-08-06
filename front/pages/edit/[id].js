@@ -19,6 +19,7 @@ import axios from 'axios';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 import { END } from 'redux-saga';
 import DeleteAlertDialogSlide from '../../components/AlertDialogSlide/DeleteAlertDialogSlide';
+import Head from 'next/head';
 
 const My = () => {
   const { me } = useSelector((state) => state.user);
@@ -135,9 +136,10 @@ const My = () => {
   const onShowLikedProfile = useCallback(() => {
     setShowLikedProfile((prev) => !prev);
   });
-  const test = () => {
+  const test = useCallback(() => {
+    console.log('프로필 삭제 클릭');
     setShowSlideOut((prev) => !prev);
-  };
+  });
 
   const DrawWrapper2 = {
     position: 'relative',
@@ -148,6 +150,10 @@ const My = () => {
 
   return (
     <>
+      <Head>
+        <meta property="og:title" content="프로파일러" />
+        <meta property="og:description" content="주변사람 SNS 찾기" />
+      </Head>
       <>
         {me ? (
           <TopBottomEdit title="프로필 수정" footer="" push="my">
