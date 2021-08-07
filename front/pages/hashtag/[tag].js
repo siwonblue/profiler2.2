@@ -10,7 +10,6 @@ import TagSearchCard from '../../components/TagSearchCard';
 import wrapper from '../../store/configureStore';
 import axios from 'axios';
 import { END } from 'redux-saga';
-import Head from 'next/head';
 
 const Home = () => {
   const { hashtagProfiles } = useSelector((state) => state.profile);
@@ -30,10 +29,6 @@ const Home = () => {
 
   return (
     <TopBottomEdit title="검색 결과" push="">
-      <Head>
-        <meta property="og:title" content="프로파일러" />
-        <meta property="og:description" content="주변사람 SNS 찾기" />
-      </Head>
       <DivChildren style={{ height: '100%' }}>
         <Row style={{ margin: '2rem 0 3rem 0' }}>
           <Col

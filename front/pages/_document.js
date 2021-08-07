@@ -32,10 +32,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <Head>
-          <meta property="og:title" content="프로파일러" />
-          <meta property="og:description" content="주변사람 SNS 찾기" />
-        </Head>
         <body>
           <Main />
           <NextScript />

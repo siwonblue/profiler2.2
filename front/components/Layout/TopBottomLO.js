@@ -47,11 +47,8 @@ const h = {
 const TopBottomLO = ({ children, loadSearch, loadProfile, loadMy }) => (
   <>
     <Row style={topRow}>
-      <Col style={b} span={12}>
+      <Col style={b} span={24}>
         <span>프로파일러 : 주변사람 SNS 찾기</span>
-      </Col>
-      <Col style={c} span={12}>
-        <div>???</div>
       </Col>
     </Row>
     <div>{children}</div>

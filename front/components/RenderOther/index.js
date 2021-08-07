@@ -29,6 +29,7 @@ import {
   rowSt,
 } from './styles';
 import Link from 'next/link';
+import { b12 } from '../ProfileMapping/styles';
 
 const RenderOther2 = ({ profile }) => {
   const dispatch = useDispatch();
@@ -41,7 +42,6 @@ const RenderOther2 = ({ profile }) => {
   const Hashtags = profile?.Hashtags;
   const finedTags = Hashtags?.map((t) => `#${t.name}`);
   const Contacts = profile?.Contacts;
-
   const onToggleLeftDrawer = useCallback(() => {
     setShowLeftDrawer((prev) => !prev);
   });
@@ -74,6 +74,8 @@ const RenderOther2 = ({ profile }) => {
     }, secondsToGo * 1000);
   }
 
+  const def = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/defaultProfile.jpeg';
+
   return (
     <DivChildren>
       <div style={DrawWrapper}>
@@ -83,7 +85,7 @@ const RenderOther2 = ({ profile }) => {
           </Col>
 
           <Col style={d3} span={8}>
-            <img style={ImageStyle5} src={`${imagePath || `defaultProfile.jpeg`}`} alt="profile_image" />
+            <img style={ImageStyle5} src={`${imagePath || def}`} alt="profile_image" />
           </Col>
           <Col span={8}>{null}</Col>
         </Row>
@@ -167,7 +169,7 @@ const RenderOther2 = ({ profile }) => {
             <>
               {Contacts?.map((c) => (
                 <div key={c?.id} style={contactMapStyle}>
-                  <a style={d14} key={c?.id} href={`https://${c?.url}`} target="_blank" rel="noopener noreferrer">
+                  <a style={d14} key={c?.id} href={`${c?.url}`} target="_blank" rel="noopener noreferrer">
                     {c?.title}
                   </a>
                 </div>

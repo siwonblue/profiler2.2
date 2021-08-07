@@ -20,29 +20,38 @@ import Head from 'next/head';
 const My = () => {
   const router = useRouter();
   const { me, isSigningUp } = useSelector((state) => state.user);
-  const { imagePath, addProfileDone } = useSelector((state) => state.profile);
+  const { imagePath, addProfileDone, addProfileLoading, addImageError } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
   const [name, onChangeName] = useInput('');
   const [selfIntro, onChangeSelfIntro] = useInput('');
   const [tag, onChangeTag] = useInput('');
-
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_MY_INFO_REQUEST,
-  //   });
-  //   dispatch({
-  //     type: RESET_IMAGE_SUCCESS,
-  //   });
-  // }, []);
-
+  console.log(me);
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+    dispatch({
+      type: RESET_IMAGE_SUCCESS,
+    });
+  }, []);
   useEffect(() => {
     if (addProfileDone) {
       router.push('/my');
     }
   }, [addProfileDone]);
 
+  useEffect(() => {
+    if (addImageError) {
+      if (addImageError[117] === 'F') {
+        return message.error(`이미지 최대 용량은 10MB 입니다.`, 1);
+      }
+      if (addImageError[117] === 'd') {
+        return message.error(`올바르지 않은 타입 입니다.`, 1);
+      }
+    }
+  }, [addImageError]);
+
   const onSubmit = useCallback(() => {
-    console.log(name, selfIntro, tag, imagePath);
     if (!name || !name.trim()) {
       return message.error('프로필 이름을 입력해주세요.', 1);
     }
@@ -73,13 +82,9 @@ const My = () => {
       data: imageFormData,
     });
   }, []);
-
+  const def = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/defaultProfile.jpeg';
   return (
     <>
-      <Head>
-        <meta property="og:title" content="프로파일러" />
-        <meta property="og:description" content="주변사람 SNS 찾기" />
-      </Head>
       <TopBottomEdit title="프로필 생성" footer="" push="my">
         {me && (
           <>
@@ -92,7 +97,7 @@ const My = () => {
                   }}
                 >
                   <Col style={{ textAlign: 'center' }} span={24}>
-                    <img style={ImageStyle} src={`${imagePath || `defaultProfile.jpeg`}`} alt="profile_image" />
+                    <img style={ImageStyle} src={`${imagePath || def}`} alt="profile_image" />
                   </Col>
                 </Row>
                 <Row
@@ -124,7 +129,7 @@ const My = () => {
                         color: '#FFFFFF',
                       }}
                       htmlType="submit"
-                      loading={isSigningUp}
+                      loading={addProfileLoading}
                     >
                       적용하기
                     </Button>

@@ -23,7 +23,7 @@ import Head from 'next/head';
 
 const My = () => {
   const { me } = useSelector((state) => state.user);
-  const { imagePath, editProfileDone } = useSelector((state) => state.profile);
+  const { imagePath, editProfileDone, deleteProfileDone, addImageError } = useSelector((state) => state.profile);
   const router = useRouter();
   const profile = me?.profiles;
   const dispatch = useDispatch();
@@ -79,17 +79,22 @@ const My = () => {
     setTag(e.target.value);
     setDetect(true);
   };
-
   useEffect(() => {
+    if (deleteProfileDone) {
+      router.push('/my');
+    }
     if (editProfileDone) {
       router.push('/my');
     }
-  }, [editProfileDone]);
-  useEffect(() => {
-    if (editProfileDone) {
-      router.push('/my');
+    if (addImageError) {
+      if (addImageError[117] === 'F') {
+        return message.error(`이미지 최대 용량은 10MB 입니다.`, 1);
+      }
+      if (addImageError[117] === 'd') {
+        return message.error(`올바르지 않은 타입 입니다.`, 1);
+      }
     }
-  }, [editProfileDone]);
+  }, [deleteProfileDone, editProfileDone, addImageError]);
 
   const onSubmit = useCallback(() => {
     console.log(name, intro, tag, imagePath);
@@ -137,7 +142,6 @@ const My = () => {
     setShowLikedProfile((prev) => !prev);
   });
   const test = useCallback(() => {
-    console.log('프로필 삭제 클릭');
     setShowSlideOut((prev) => !prev);
   });
 
@@ -147,13 +151,9 @@ const My = () => {
     padding: '0 2rem 0 2rem',
     height: '100vh',
   };
-
+  const def = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/defaultProfile.jpeg';
   return (
     <>
-      <Head>
-        <meta property="og:title" content="프로파일러" />
-        <meta property="og:description" content="주변사람 SNS 찾기" />
-      </Head>
       <>
         {me ? (
           <TopBottomEdit title="프로필 수정" footer="" push="my">
@@ -165,11 +165,7 @@ const My = () => {
                   }}
                 >
                   <Col style={{ textAlign: 'center' }} span={24}>
-                    <img
-                      style={ImageStyle}
-                      src={`${imagePath || exImage || `defaultProfile.jpeg`}`}
-                      alt="profile_image"
-                    />
+                    <img style={ImageStyle} src={`${imagePath || exImage || def}`} alt="profile_image" />
                   </Col>
                 </Row>
                 <Row

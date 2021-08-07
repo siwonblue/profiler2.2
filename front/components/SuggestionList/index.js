@@ -17,7 +17,8 @@ const SuggestionA = ({ showDiv, onTrue, onFalse }) => {
   const dispatch = useDispatch();
   const { suggestion } = useSelector((state) => state.profile);
   const maxLength = 8;
-
+  const def = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/defaultProfile.jpeg';
+  const tag = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/tag.png';
   useEffect(() => {
     if (input) {
       dispatch({
@@ -55,8 +56,7 @@ const SuggestionA = ({ showDiv, onTrue, onFalse }) => {
                 <li>
                   <Row key={a?.[0]?.id}>
                     <Col style={d} span={6}>
-                      {/*<img style={ImageStyle6} src={`${backUrl}/tag.png`} alt="kakao" />*/}
-                      <Image width={20} height={20} src={tag} />
+                      <img style={ImageStyle6} src={tag} alt="tag" />
                     </Col>
                     <Col span={18}>
                       <Row>
@@ -84,11 +84,7 @@ const SuggestionA = ({ showDiv, onTrue, onFalse }) => {
                     <Col style={d} span={6}>
                       <Link href="/profile/[id]" as={`/profile/${p?.id}`}>
                         <a>
-                          <img
-                            style={ImageStyle6}
-                            src={`${p?.Images[0]?.src || `defaultProfile.jpeg`}`}
-                            alt="profile_image"
-                          />
+                          <img style={ImageStyle6} src={`${p?.Images[0]?.src || def}`} alt="profile_image" />
                         </a>
                       </Link>
                     </Col>

@@ -2,12 +2,12 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import naver from '../../public/naver.png';
-import kakao from '../../public/kakao.png';
 import { a, a0, a1, c, d, e, e0, e1, f, kakaoStyle, naverStyle } from './styles';
 import { backUrl } from '../../config/config';
 
 const MyNotMe = () => {
+  const kakao = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/kakao.png';
+  const naver = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/naver.png';
   return (
     <>
       <Row style={a}>
@@ -23,8 +23,7 @@ const MyNotMe = () => {
         <a href={`${backUrl}/user/naver`} rel="noopener noreferrer">
           <Row style={naverStyle}>
             <Col style={e0} span={8}>
-              <Image width={20} height={20} src={naver} />
-              {/*<img width="20" height="20" src={`${backUrl}/naver.png`} alt="오류" />*/}
+              <img width="20" height="20" src={naver} alt="오류" />
             </Col>
             <Col style={e1} span={8}>
               <h4 style={e}>네이버 로그인</h4>
@@ -36,8 +35,7 @@ const MyNotMe = () => {
         <a href={`${backUrl}/user/kakao`} rel="noopener noreferrer">
           <Row style={kakaoStyle}>
             <Col style={e0} span={8}>
-              <Image width={20} height={20} src={kakao} />
-              {/*<img width="20" height="20" src={`${backUrl}/kakao.png`} alt="오류" />*/}
+              <img width="20" height="20" src={kakao} alt="오류" />
             </Col>
             <Col style={e1} span={8}>
               <h4 style={d}>카카오 로그인</h4>
@@ -56,7 +54,6 @@ const MyNotMe = () => {
           </Link>
         </Col>
       </Row>
-      ; ;
     </>
   );
 };

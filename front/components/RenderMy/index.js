@@ -122,7 +122,7 @@ const RenderMy = () => {
     flexDirection: 'column',
     justifyContent: 'center',
   };
-  console.log(`🔥🔥🔥🔥🔥🔥profiles?.[profileNumb]?.Images :${profiles?.[profileNumb]?.Images?.[0]}`);
+  const def = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/defaultProfile.jpeg';
 
   return (
     <>
@@ -144,7 +144,7 @@ const RenderMy = () => {
               <Col style={c2} span={8}>
                 <img
                   style={ImageStyle}
-                  src={`${profiles?.[profileNumb]?.Images?.[0]?.src || `defaultProfile.jpeg`}`}
+                  src={`${profiles?.[profileNumb]?.Images?.[0]?.src || def}`}
                   alt="profile_image"
                 />
               </Col>
@@ -190,15 +190,7 @@ const RenderMy = () => {
                 ) : (
                   <DownCircleFilled onClick={onToggleContactForm} style={c11} />
                 )}
-                {profiles?.[profileNumb]?.Contacts.length === 0 ? (
-                  <h3 style={c12}>링크 등록하기</h3>
-                ) : (
-                  <Link href="https://naver.com">
-                    <a rel="noopener noreferrer">
-                      <h3 style={c13}>카톡 공유하기</h3>
-                    </a>
-                  </Link>
-                )}
+                {profiles?.[profileNumb]?.Contacts.length === 0 ? <h3 style={c12}>링크 등록하기</h3> : null}
               </Col>
             </Row>
             {contactFormOpened && (

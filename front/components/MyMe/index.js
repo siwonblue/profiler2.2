@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react';
-import Image from 'next/image';
 import { Button, Col, Drawer, Row } from 'antd';
 import { PlusCircleTwoTone } from '@ant-design/icons';
 import Link from 'next/link';

@@ -25,10 +25,6 @@ const MyProfile = () => {
 
   return (
     <TopBottomLO loadSearch={loadSearch} loadProfile={loadProfile} loadMy={loadMy} name="my profile">
-      <Head>
-        <meta property="og:title" content="프로파일러" />
-        <meta property="og:description" content="주변사람 SNS 찾기" />
-      </Head>
       {me ? (
         <RenderMy />
       ) : (

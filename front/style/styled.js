@@ -32,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-    border: 1px dotted #2D2C3CFF;
+    //border: 1px solid #2D2C3CFF;
     background: #2D2C3C;
     background: -moz-radial-gradient(center, #2D2C3C 0%, #232330 35%, #191925 100%);
     background: -webkit-radial-gradient(center, #2D2C3C 0%, #232330 35%, #191925 100%);
@@ -95,7 +95,7 @@ export const topRow = {
   borderTop: 'none',
   borderLeft: 'none',
   borderRight: 'none',
-  borderBottom: '1px dotted aqua',
+  borderBottom: '1px solid #2d2c3c',
   display: 'flex',
   color: '#FFFFFF',
 };
@@ -239,6 +239,18 @@ export const ImageStyle = {
   WebkitBoxShadow: '0px -10px 49px 0px rgba(0,0,0,0.88)',
   boxShadow: '0px -10px 49px 0px rgba(0,0,0,0.88)',
 };
+export const ImageStyle0 = {
+  width: '20rem',
+  borderRadius: '50%',
+  boxSizing: 'border-box',
+  objectFit: 'cover',
+  height: '20rem',
+  border: 'none',
+  // marginBottom: "0.6rem",
+  WebkitBoxShadow: '0px -10px 49px 0px rgba(0,0,0,0.88)',
+  boxShadow: '0px -10px 49px 0px rgba(0,0,0,0.88)',
+};
+
 // 프로필 생성 및 편집 페이지에 들어가는 애들
 
 export const ImageStyle2 = {
