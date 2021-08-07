@@ -12,7 +12,6 @@ module.exports = () => {
 
   passport.deserializeUser(async (id, done) => {
     console.log('------deserializeUser 실행------');
-    console.log();
     try {
       const user = await User.findOne({ where: { id } });
       done(null, user); // 요청에서 보내준 id를 기반으로 db 에서 정보를 가져와 req.user 에 담아준다.

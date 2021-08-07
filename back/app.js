@@ -11,8 +11,8 @@ const helmet = require('helmet');
 const passportConfig = require('./passport');
 dotenv.config();
 const app = express();
-const frontUrl = 'https://filer.pro';
-// const frontUrl = 'http://localhost:3060';
+// const frontUrl = 'https://filer.pro';
+const frontUrl = 'http://localhost:3060';
 
 const db = require('./models');
 const userRouter = require('./routes/user');
@@ -29,6 +29,7 @@ db.sequelize
   .catch(console.error);
 
 if (process.env.NODE_ENV === 'production') {
+  app.enable('trust proxy');
   app.use(morgan('combined'));
   app.use(hpp());
   app.use(helmet({ contentSecurityPolicy: false }));
@@ -47,6 +48,19 @@ if (process.env.NODE_ENV === 'production') {
     }),
   );
 }
+// const sessionOption = {
+//   resave: false,
+//   saveUninitialized: false,
+//   secret: process.env.COOKIE_SECRET,
+//   cookie: {
+//     httpOnly: true,
+//     secure: true,
+//     domain: process.env.NODE_ENV === 'production' && '.filer.pro',
+//   },
+// };
+// if (process.env.NODE_ENV === 'production') {
+//   sessionOption.proxy = true;
+// }
 
 app.use('/', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json()); // axios로 데이터 보낼 떄 parsing 후 req.body 로

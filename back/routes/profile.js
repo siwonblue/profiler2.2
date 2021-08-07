@@ -20,7 +20,13 @@ AWS.config.update({
   secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
   region: 'ap-northeast-2',
 });
-
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/jpg' || file.mimetype == 'image/png') {
+    cb(null, true);
+  } else {
+    return cb(new Error('Invalid mime type'));
+  }
+};
 const upload = multer({
   storage: multerS3({
     s3: new AWS.S3(),
@@ -29,7 +35,8 @@ const upload = multer({
       cb(null, `original/${Date.now()}_${path.basename(file.originalname)}`);
     },
   }),
-  limit: { fileSize: 5 * 1024 * 1024 },
+  limits: { fileSize: 1 * 1024 * 1024 },
+  fileFilter,
 });
 
 // const upload = multer({
@@ -132,7 +139,7 @@ router.patch('/edit', isLoggedIn, upload.none(), async (req, res, next) => {
     }
     const exI = await Image.findOne({ where: { ProfileId: profileId } });
     if (image) {
-      console.log('🔥🔥🔥🔥🔥이미지 변경 db 에 실행🔥🔥🔥🔥🔥');
+      console.log('🔥🔥🔥🔥🔥이미지 변경 src db 에 실행🔥🔥🔥🔥🔥');
       if (!exI) {
         const imag = await Image.create({ src: image });
         await profile.addImages(imag);
@@ -227,12 +234,14 @@ router.post('/add', isLoggedIn, upload.none(), async (req, res, next) => {
 });
 
 router.post('/image', isLoggedIn, upload.single('image'), async (req, res, next) => {
-  console.log('req.file🔥🔥🔥🔥🔥🔥🔥🔥🔥', req.file);
-  console.log('req.file.location🔥🔥🔥🔥🔥🔥🔥🔥🔥', req.file.location);
-  if (!req.file) {
-    return res.json('defaultProfile.jpeg');
+  try {
+    if (!req.file) {
+      return res.json('defaultProfile.jpeg');
+    }
+    res.json(req.file.location);
+  } catch (error) {
+    res.json(error.message);
   }
-  res.json(req.file.location);
 });
 
 router.post('/contact', isLoggedIn, async (req, res, next) => {
