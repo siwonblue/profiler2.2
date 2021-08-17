@@ -61,7 +61,7 @@ function loadSuggestionAPI(input) {
 
 function* loadSuggestion(action) {
   try {
-    console.log('saga loadSuggestion');
+    // console.log('saga loadSuggestion');
     const result = yield call(loadSuggestionAPI, action.data);
     yield put({
       type: LOAD_SUGGESTION_SUCCESS,
@@ -82,7 +82,7 @@ function loadAllProfilesAPI(lastId) {
 
 function* loadAllProfiles(action) {
   try {
-    console.log('saga loadAllProfiles');
+    // console.log('saga loadAllProfiles');
     const result = yield call(loadAllProfilesAPI, action.data);
     yield put({
       type: LOAD_ALL_PROFILES_SUCCESS,
@@ -103,7 +103,7 @@ function loadOtherProfilesAPI(data) {
 
 function* loadOtherProfiles(action) {
   try {
-    console.log('saga loadOtherProfiles');
+    // console.log('saga loadOtherProfiles');
     const result = yield call(loadOtherProfilesAPI, action.data);
     yield put({
       type: LOAD_OTHER_PROFILES_SUCCESS,
@@ -124,7 +124,7 @@ function loadAllProfilesLenAPI() {
 
 function* loadAllProfilesLen(action) {
   try {
-    console.log('saga loadAllProfiles');
+    // console.log('saga loadAllProfiles');
     const result = yield call(loadAllProfilesLenAPI);
     yield put({
       type: LOAD_ALL_PROFILES_LEN_SUCCESS,
@@ -145,7 +145,7 @@ function loadHashtagProfilesAPI(data) {
 
 function* loadHashtagProfiles(action) {
   try {
-    console.log('saga loadHashtagProfiles');
+    // console.log('saga loadHashtagProfiles');
     const result = yield call(loadHashtagProfilesAPI, action.data);
     yield put({
       type: LOAD_HASHTAG_PROFILES_SUCCESS,
@@ -166,7 +166,7 @@ function addProfileAPI(data) {
 
 function* addProfile(action) {
   try {
-    console.log('saga addProfile');
+    // console.log('saga addProfile');
     const result = yield call(addProfileAPI, action.data);
     yield put({
       type: ADD_PROFILE_SUCCESS,
@@ -187,7 +187,7 @@ function profileLikeAPI(data) {
 
 function* profileLike(action) {
   try {
-    console.log('saga profileLike');
+    // console.log('saga profileLike');
     const result = yield call(profileLikeAPI, action.data);
     yield put({
       type: PROFILE_LIKE_SUCCESS,
@@ -212,7 +212,7 @@ function profileUnlikeAPI(data) {
 
 function* profileUnlike(action) {
   try {
-    console.log('saga profileUnlike');
+    // console.log('saga profileUnlike');
     const result = yield call(profileUnlikeAPI, action.data);
     yield put({
       type: PROFILE_UNLIKE_SUCCESS,
@@ -237,7 +237,7 @@ function editProfileAPI(data) {
 
 function* editProfile(action) {
   try {
-    console.log('saga editProfile');
+    // console.log('saga editProfile');
     const result = yield call(editProfileAPI, action.data);
     yield put({
       type: EDIT_PROFILE_SUCCESS,
@@ -258,7 +258,7 @@ function addTodayAPI(data) {
 
 function* addToday(action) {
   try {
-    console.log('saga addToday');
+    // console.log('saga addToday');
     const result = yield call(addTodayAPI, action.data);
     yield put({
       type: EDIT_PROFILE_SUCCESS,
@@ -280,7 +280,7 @@ function deleteProfileAPI(data) {
 
 function* deleteProfile(action) {
   try {
-    console.log('saga deleteProfile');
+    // console.log('saga deleteProfile');
     const result = yield call(deleteProfileAPI, action.data);
     yield put({
       type: DELETE_PROFILE_SUCCESS,
@@ -301,7 +301,7 @@ function addImageAPI(data) {
 
 function* addImage(action) {
   try {
-    console.log('saga addImage');
+    // console.log('saga addImage');
     const result = yield call(addImageAPI, action.data);
     yield put({
       type: ADD_IMAGE_SUCCESS,
@@ -322,7 +322,7 @@ function addContactAPI(data) {
 
 function* addContact(action) {
   try {
-    console.log('saga addContact');
+    // console.log('saga addContact');
     const result = yield call(addContactAPI, action.data);
     yield put({
       type: ADD_CONTACT_SUCCESS,
@@ -348,7 +348,7 @@ function deleteContactAPI(data) {
 
 function* deleteContact(action) {
   try {
-    console.log('saga deleteContact');
+    // console.log('saga deleteContact');
     const result = yield call(deleteContactAPI, action.data);
     yield put({
       type: DELETE_CONTACT_SUCCESS,

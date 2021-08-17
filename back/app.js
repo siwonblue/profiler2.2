@@ -11,8 +11,8 @@ const helmet = require('helmet');
 const passportConfig = require('./passport');
 dotenv.config();
 const app = express();
-// const frontUrl = 'https://filer.pro';
-const frontUrl = 'http://localhost:3060';
+const frontUrl = 'https://filer.pro';
+// const frontUrl = 'http://localhost:3060';
 
 const db = require('./models');
 const userRouter = require('./routes/user');
@@ -73,7 +73,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: true,
       domain: process.env.NODE_ENV === 'production' && '.filer.pro',
     },
   }),

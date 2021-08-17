@@ -3,10 +3,11 @@ const path = require('path');
 const fs = require('fs');
 const multer = require('multer');
 const { isLoggedIn } = require('./middlewares');
-const { Hashtag, Profile, User, Image, Contact } = require('../models');
+const { Hashtag, Profile, User, Image, Contact, ImageS3 } = require('../models');
 const multerS3 = require('multer-s3');
 const AWS = require('aws-sdk');
 const router = express.Router();
+const sanitizeHtml = require('sanitize-html');
 
 try {
   fs.accessSync('uploads');
@@ -35,7 +36,7 @@ const upload = multer({
       cb(null, `original/${Date.now()}_${path.basename(file.originalname)}`);
     },
   }),
-  limits: { fileSize: 1 * 1024 * 1024 },
+  limits: { fileSize: 10 * 1024 * 1024 },
   fileFilter,
 });
 
@@ -97,12 +98,16 @@ router.patch('/deleteLike', isLoggedIn, async (req, res, next) => {
 
 router.patch('/edit', isLoggedIn, upload.none(), async (req, res, next) => {
   try {
-    const name = req.body.name;
-    const intro = req.body.intro;
+    let name = req.body.name;
+    let intro = req.body.intro;
     let tag = req.body.tag;
     let image = req.body.image;
     const profileId = req.body.profileId;
-    console.log('req.body', req.body);
+
+    intro = sanitizeHtml(intro, { allowedTags: [] });
+    name = sanitizeHtml(name, { allowedTags: [] });
+    tag = sanitizeHtml(tag, { allowedTags: [] });
+    image = sanitizeHtml(image, { allowedTags: [] });
 
     if (req.body.tag === 'undefined') {
       tag = undefined;
@@ -139,11 +144,12 @@ router.patch('/edit', isLoggedIn, upload.none(), async (req, res, next) => {
     }
     const exI = await Image.findOne({ where: { ProfileId: profileId } });
     if (image) {
-      console.log('🔥🔥🔥🔥🔥이미지 변경 src db 에 실행🔥🔥🔥🔥🔥');
       if (!exI) {
+        await ImageS3.create({ src: image, UserId: req.user.id });
         const imag = await Image.create({ src: image });
         await profile.addImages(imag);
       } else {
+        await ImageS3.create({ src: image, UserId: req.user.id });
         await Image.update(
           {
             src: image,
@@ -187,20 +193,23 @@ router.patch('/deleteContact', isLoggedIn, async (req, res, next) => {
 
 router.post('/add', isLoggedIn, upload.none(), async (req, res, next) => {
   try {
-    console.log('req.body', req.body);
-    const name = req.body.name;
-    const intro = req.body.selfIntro;
+    let name = req.body.name;
+    let intro = req.body.selfIntro;
+    name = sanitizeHtml(name, { allowedTags: [] });
+    intro = sanitizeHtml(intro, { allowedTags: [] });
     let tag;
     let image;
     if (req.body.tag === 'undefined') {
       tag = undefined;
     } else {
       tag = req.body.tag;
+      tag = sanitizeHtml(tag, { allowedTags: [] });
     }
     if (req.body.image === 'null') {
       image = null;
     } else {
       image = req.body.image;
+      image = sanitizeHtml(image, { allowedTags: [] });
     }
     const profile = await Profile.create({
       name: name,
@@ -215,7 +224,7 @@ router.post('/add', isLoggedIn, upload.none(), async (req, res, next) => {
       await profile.addHashtags(result.map((p) => p[0]));
     }
     if (image) {
-      console.log('🔥🔥🔥🔥🔥🔥 db에 이미지 src 삽입중');
+      await ImageS3.create({ src: image, UserId: req.user.id });
       const imag = await Image.create({ src: image });
       await profile.addImages(imag);
     }
@@ -225,7 +234,6 @@ router.post('/add', isLoggedIn, upload.none(), async (req, res, next) => {
         exclude: ['createdAt', 'updatedAt'],
       },
     });
-    console.log('profile.id', profile.id);
     res.send({ image: imagePath, id: profile.id });
   } catch (error) {
     console.error(error);
@@ -246,12 +254,13 @@ router.post('/image', isLoggedIn, upload.single('image'), async (req, res, next)
 
 router.post('/contact', isLoggedIn, async (req, res, next) => {
   try {
-    const title = req.body.title;
+    let title = req.body.title;
     let url = req.body.url;
+    title = sanitizeHtml(title, { allowedTags: [] });
+    url = sanitizeHtml(url, { allowedTags: [] });
     const profileId = req.body.profileId;
-    console.log(title, url, profileId);
     if (url[0] !== 'h') {
-      url = 'http://' + url;
+      url = 'https://' + url;
     }
     await Contact.create({
       title,
@@ -276,7 +285,6 @@ router.post('/contact', isLoggedIn, async (req, res, next) => {
 router.post('/loadOther', async (req, res, next) => {
   try {
     const profileId = req.body.profileId;
-    console.log('🔥🔥🔥🔥🔥🔥🔥🔥', profileId);
     const profile = await Profile.findOne({
       where: { id: profileId },
       attributes: {
@@ -334,8 +342,6 @@ router.patch('/:likedId/like', isLoggedIn, async (req, res, next) => {
     const likedId = req.body.likedId; // 숫자
     const likedIdtest = req.params.likedId; // 문자
     const likerId = req.body.likerId; //숫자
-    console.log(req.body);
-    console.log(likedId, likedIdtest, likerId);
 
     const profile = await Profile.findOne({
       where: { id: likedId },

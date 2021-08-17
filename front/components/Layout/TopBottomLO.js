@@ -42,13 +42,19 @@ const g = {
   color: '#5C5E6F',
 };
 const h = {
-  borderTop: '2px solid #FB6580',
+  display: 'flex',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
 };
+
 const TopBottomLO = ({ children, loadSearch, loadProfile, loadMy }) => (
   <>
     <Row style={topRow}>
-      <Col style={b} span={24}>
-        <span>프로파일러 : 주변사람 SNS 찾기</span>
+      <Col style={b} span={12}>
+        <span>프로파일러 Beta : 주변사람 SNS 찾기</span>
+      </Col>
+      <Col style={h} span={12}>
+        <span>문의 : ~~.naver.com</span>
       </Col>
     </Row>
     <div>{children}</div>

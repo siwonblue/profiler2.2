@@ -116,31 +116,31 @@ const ProfileMapping = ({ profile, showLeftDrawer, onToggleLeftDrawer }) => {
     </>
   );
 };
-
-ProfileMapping.propTypes = {
-  profile: PropTypes.shape({
-    name: PropTypes.string,
-    intro: PropTypes.string,
-    id: PropTypes.number,
-    UserId: PropTypes.number,
-    Images: PropTypes.arrayOf({
-      id: PropTypes.number,
-      src: PropTypes.string,
-      profileId: PropTypes.number,
-    }),
-    Hashtags: PropTypes.arrayOf({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      ProfileTag: PropTypes.shape({
-        createdAt: PropTypes.string,
-        updatedAt: PropTypes.string,
-      }),
-    }),
-    Contacts: PropTypes.arrayOf(PropTypes.object),
-    Liker: PropTypes.arrayOf(PropTypes.object),
-  }),
-  showLeftDrawer: PropTypes.bool.isRequired,
-  onToggleLeftDrawer: PropTypes.func.isRequired,
-};
+//
+// ProfileMapping.propTypes = {
+//   profile: PropTypes.shape({
+//     name: PropTypes.string,
+//     intro: PropTypes.string,
+//     id: PropTypes.number,
+//     UserId: PropTypes.number,
+//     Images: PropTypes.arrayOf({
+//       id: PropTypes.number,
+//       src: PropTypes.string,
+//       profileId: PropTypes.number,
+//     }),
+//     Hashtags: PropTypes.arrayOf({
+//       id: PropTypes.number,
+//       name: PropTypes.string,
+//       ProfileTag: PropTypes.shape({
+//         createdAt: PropTypes.string,
+//         updatedAt: PropTypes.string,
+//       }),
+//     }),
+//     Contacts: PropTypes.arrayOf(PropTypes.object),
+//     Liker: PropTypes.arrayOf(PropTypes.object),
+//   }),
+//   showLeftDrawer: PropTypes.bool.isRequired,
+//   onToggleLeftDrawer: PropTypes.func.isRequired,
+// };
 
 export default ProfileMapping;

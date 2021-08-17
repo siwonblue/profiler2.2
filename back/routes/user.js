@@ -4,11 +4,52 @@ const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { User, Profile, Image, Hashtag, Contact } = require('../models');
 const router = express.Router();
-// const frontUrl = 'https://filer.pro';
-const frontUrl = 'http://localhost:3060';
-router.get('/withDrawal', isLoggedIn, async (req, res, next) => {
+const AWS = require('aws-sdk');
+
+const frontUrl = 'https://filer.pro';
+// const frontUrl = 'http://localhost:3060';
+
+AWS.config.update({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2',
+});
+
+// const s3 = new aws.S3({
+//   accessKeyId: process.env.S3_ACCESS_KEY_ID,
+//   secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+//   Bucket: 'react-profiler2-s3',
+// });
+// //
+// s3.deleteObject({ Bucket: 'react-profiler2-s3', Key: 'image.jpg' }, (err, data) => {
+//   console.error(err);
+//   console.log(data);
+// });
+
+router.get('/withDrawal', async (req, res, next) => {
   try {
-    const userId = req.user.id;
+    // const userId = req.user.id;
+
+    // const s3 = new AWS.S3({
+    //   accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    //   secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    //   Bucket: 'react-profiler2-s3',
+    // });
+    // try {
+    //   await s3
+    //     .deleteObject({ Bucket: 'react-profiler2-s3', Key: '1628392518572_프로파일러4.png' }, (err, data) => {
+    //       if (err) {
+    //         console.error('err', err);
+    //       } else {
+    //         console.log('data', data);
+    //       }
+    //     })
+    //     .promise();
+    // } catch (error) {
+    //   console.error(error);
+    //   next(error);
+    // }
+
     await Profile.destroy({ where: { UserId: userId } });
     await User.destroy({ where: { id: userId } });
     res.status(200).json('ok');

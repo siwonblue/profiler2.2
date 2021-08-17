@@ -16,6 +16,7 @@ const Home = () => {
   const len = hashtagProfiles?.length;
   const dispatch = useDispatch();
   const router = useRouter();
+  const tag = router.query.tag;
   //
   // useEffect(() => {
   //   dispatch({
@@ -30,7 +31,7 @@ const Home = () => {
   return (
     <TopBottomEdit title="검색 결과" push="">
       <DivChildren style={{ height: '100%' }}>
-        <Row style={{ margin: '2rem 0 3rem 0' }}>
+        <Row style={{ margin: '0 0 3rem 0' }}>
           <Col
             style={{
               display: 'flex',
@@ -69,6 +70,12 @@ const Home = () => {
               voluptas!
             </div>
           </Col>
+        </Row>
+        <Row>
+          <Col style={{ margin: '0 0 2rem 3rem' }} span={12}>
+            <h3>#{tag}</h3>
+          </Col>
+          <Col span={12}></Col>
         </Row>
         <Row style={rowStyle}>
           <Col style={{ textAlign: 'center' }} span={24}>

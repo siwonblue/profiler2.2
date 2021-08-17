@@ -1,37 +1,37 @@
-const express = require("express");
-const { Op } = require("sequelize");
-const passport = require("passport");
-const bcrypt = require("bcrypt");
-const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
-const { User, Profile, Image, Hashtag, Contact } = require("../models");
+const express = require('express');
+const { Op } = require('sequelize');
+const passport = require('passport');
+const bcrypt = require('bcrypt');
+const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
+const { User, Profile, Image, Hashtag, Contact } = require('../models');
+const { speedLimiter } = require('./middlewares');
 const router = express.Router();
 
 // GET suggestion/서강
-router.get("/:input", async (req, res, next) => {
+router.get('/:input', async (req, res, next) => {
   try {
     //#을 붙였는지 아닌지 먼저 판단
     let input = req.params.input;
-    if (input[0] === "#") {
+    if (input[0] === '#') {
       input = input.slice(1);
     }
-    console.log(input); // 서강
 
     const hashtags = await Hashtag.findAll({
       where: {
-        name: { [Op.like]: `%${input}%` }
-      }
+        name: { [Op.like]: `%${input}%` },
+      },
     });
 
     const profiles = await Profile.findAll({
       where: {
-        name: { [Op.like]: `%${input}%` }
+        name: { [Op.like]: `%${input}%` },
       },
       include: [
         {
           model: Image,
-          attributes: ["src"]
-        }
-      ]
+          attributes: ['src'],
+        },
+      ],
     });
 
     const tagSuggestionResult = hashtags.map((p) => p.name);
@@ -42,11 +42,11 @@ router.get("/:input", async (req, res, next) => {
           include: [
             {
               model: Hashtag,
-              where: { name: t }
-            }
-          ]
-        })
-      )
+              where: { name: t },
+            },
+          ],
+        }),
+      ),
     );
     // 서강대1,서강대2,서강대,서강대짱짱 이라는 태그를 포함한 모든 프로필들
 

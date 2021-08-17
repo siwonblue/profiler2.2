@@ -12,7 +12,7 @@ const TagSearchCard = ({ profile }) => {
   const exTag = profile?.[0]?.Hashtags;
   const miTag = exTag?.map((t) => `#${t.name}`);
   const finedTag = miTag?.slice(0, 4);
-
+  const def = 'https://react-profiler2-s3.s3.ap-northeast-2.amazonaws.com/original/public/defaultProfile.jpeg';
   return (
     <>
       <div>
@@ -20,11 +20,7 @@ const TagSearchCard = ({ profile }) => {
           <Col name="profile-image" span={6} style={b}>
             <Link href="/profile/[id]" as={`/profile/${id}`}>
               <a>
-                <img
-                  style={ImageStyle2}
-                  src={`${profile?.[0]?.Images?.[0]?.src || `defaultProfile.jpeg`}`}
-                  alt="profile_image"
-                />{' '}
+                <img style={ImageStyle2} src={`${profile?.[0]?.Images?.[0]?.src || def}`} alt="profile_image" />{' '}
               </a>
             </Link>
           </Col>
@@ -73,24 +69,24 @@ const TagSearchCard = ({ profile }) => {
     </>
   );
 };
-
-TagSearchCard.propTypes = {
-  profile: PropTypes.shape({
-    name: PropTypes.string,
-    intro: PropTypes.string,
-    id: PropTypes.number,
-    Hashtags: PropTypes.arrayOf(PropTypes.object),
-    ProfileTag: PropTypes.shape({
-      createdAt: PropTypes.string,
-      updatedAt: PropTypes.string,
-    }),
-  }),
-  UserId: PropTypes.number,
-  Images: PropTypes.shape({
-    id: PropTypes.number,
-    src: PropTypes.string,
-    profileId: PropTypes.number,
-  }),
-};
+//
+// TagSearchCard.propTypes = {
+//   profile: PropTypes.shape({
+//     name: PropTypes.string,
+//     intro: PropTypes.string,
+//     id: PropTypes.number,
+//     Hashtags: PropTypes.arrayOf(PropTypes.object),
+//     ProfileTag: PropTypes.shape({
+//       createdAt: PropTypes.string,
+//       updatedAt: PropTypes.string,
+//     }),
+//   }),
+//   UserId: PropTypes.number,
+//   Images: PropTypes.shape({
+//     id: PropTypes.number,
+//     src: PropTypes.string,
+//     profileId: PropTypes.number,
+//   }),
+// };
 
 export default TagSearchCard;

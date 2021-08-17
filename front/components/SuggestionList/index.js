@@ -30,19 +30,14 @@ const SuggestionA = ({ showDiv, onTrue, onFalse }) => {
 
   let profileWithTag = suggestion?.profileWithTag;
   let profiles = suggestion?.profiles;
-  // const onTrue = useCallback(() => {
-  //   setShowDiv(true);
-  // });
-  // const onFalse = useCallback(() => {
-  //   setShowDiv(false);
-  // });
   const stopPropagation = useCallback((e) => {
     e.stopPropagation();
   }, []);
+
   return (
     <>
       <div onClick={stopPropagation} style={a0}>
-        <Input allowClear onFocus={onTrue} onChange={onChangeInput} type="text" maxLength={maxLength} />
+        <Input allowClear onFocus={onTrue} onChange={onChangeInput} value={input} type="text" maxLength={maxLength} />
         {showDiv && (
           <div style={a}>
             <div style={b}>
