@@ -274,7 +274,7 @@ const About = () => {
         {/*</div>*/}
         <Row>
           <Col style={{ display: 'flex', justifyContent: 'center' }} span={24}>
-            <h3>관심 태그 넣고</h3>
+            <h3>관심 태그 입력</h3>
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center' }} span={24}>
             <h3>원하는 사람 SNS 찾기</h3>
@@ -282,7 +282,7 @@ const About = () => {
         </Row>
         <Row style={{ marginTop: '5rem' }}>
           <Col style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }} span={24}>
-            <h1>프로필 만들고</h1>
+            <h1>프로필 생성</h1>
           </Col>
         </Row>
         <Row style={{ marginBottom: '10rem' }}>
@@ -292,7 +292,7 @@ const About = () => {
         </Row>
         <Row>
           <Col style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }} span={24}>
-            <h1>내용 넣고</h1>
+            <h1>내용 입력</h1>
           </Col>
         </Row>
         <Row style={{ marginBottom: '10rem' }}>
@@ -302,7 +302,7 @@ const About = () => {
         </Row>
         <Row>
           <Col style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }} span={24}>
-            <h1>링크 걸고</h1>
+            <h1>링크 입력</h1>
           </Col>
         </Row>
         <Row style={{ marginBottom: '10rem' }}>
@@ -315,23 +315,25 @@ const About = () => {
             <h1>검색</h1>
           </Col>
         </Row>
-        <Row style={{ marginBottom: '10rem' }}>
+        <Row style={{ marginBottom: '2rem' }}>
           <Col style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'center' }} span={24}>
             <img src={search} style={{ width: '30rem', height: '65rem' }} alt="firstProfile" />
           </Col>
         </Row>
+        <Row style={{ marginBottom: '10rem' }}>
+          <Col style={{ textAlign: 'center' }} span={24}>
+            <h1>프로파일러</h1>
+          </Col>
+          <Col style={{ textAlign: 'center' }} span={24}>
+            <h3>주변사람 SNS 찾기</h3>
+          </Col>
+          <Col style={{ textAlign: 'center' }} span={24}>
+            <Link href="/my">
+              <a>바로가기</a>
+            </Link>
+          </Col>
+        </Row>
       </div>
-      <Row>
-        <Col span={16}>
-          <h1>주변사람 SNS 찾기</h1>
-          <h1>로고</h1>
-        </Col>
-        <Col span={8}>
-          <Link href="/my">
-            <a>바로가기</a>
-          </Link>
-        </Col>
-      </Row>
     </TopBottomEdit>
   );
 };

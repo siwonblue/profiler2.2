@@ -6,8 +6,8 @@ const { User, Profile, Image, Hashtag, Contact } = require('../models');
 const router = express.Router();
 const AWS = require('aws-sdk');
 
-const frontUrl = 'https://filer.pro';
-// const frontUrl = 'http://localhost:3060';
+// const frontUrl = 'https://filer.pro';
+const frontUrl = 'http://localhost:3060';
 
 AWS.config.update({
   accessKeyId: process.env.S3_ACCESS_KEY_ID,

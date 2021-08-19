@@ -54,7 +54,7 @@ const TopBottomLO = ({ children, loadSearch, loadProfile, loadMy }) => (
         <span>프로파일러 Beta : 주변사람 SNS 찾기</span>
       </Col>
       <Col style={h} span={12}>
-        <span>문의 : ~~.naver.com</span>
+        <span>문의 mvpservicefor@gmail.com</span>
       </Col>
     </Row>
     <div>{children}</div>
