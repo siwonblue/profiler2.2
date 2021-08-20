@@ -48,19 +48,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
   );
 }
-// const sessionOption = {
-//   resave: false,
-//   saveUninitialized: false,
-//   secret: process.env.COOKIE_SECRET,
-//   cookie: {
-//     httpOnly: true,
-//     secure: true,
-//     domain: process.env.NODE_ENV === 'production' && '.filer.pro',
-//   },
-// };
-// if (process.env.NODE_ENV === 'production') {
-//   sessionOption.proxy = true;
-// }
 
 app.use('/', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json()); // axios로 데이터 보낼 떄 parsing 후 req.body 로
@@ -73,7 +60,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     cookie: {
       httpOnly: true,
-      secure: true,
+      secure: false,
       domain: process.env.NODE_ENV === 'production' && '.filer.pro',
     },
   }),

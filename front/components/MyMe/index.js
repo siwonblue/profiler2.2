@@ -48,7 +48,7 @@ const MyMe = () => {
       </Row>
       <Row>
         <Col style={a3} span={24}>
-          {profiles?.length < 30 && (
+          {profiles?.length < 2 && (
             // <Col span={24} style={{ textAlign: 'center', marginBottom: '2rem', border:'1px solid red' }}>
             <Link href="/edit">
               <a>

@@ -24,7 +24,7 @@ const DivChildren = styled.div`
 const My = () => {
   const { me, logOutLoading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log('me🔥🔥🔥🔥🔥🔥🔥', me);
+  // console.log('me🔥🔥🔥🔥🔥🔥🔥', me);
 
   const loadSearch = false;
   const loadProfile = false;

@@ -135,7 +135,7 @@ const My = () => {
       type: DELETE_PROFILE_REQUEST,
       data: { id: profileId },
     });
-    router.push('/my');
+    // router.push('/my');
   }, []);
 
   const onShowLikedProfile = useCallback(() => {
